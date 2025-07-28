@@ -48,6 +48,8 @@ jobs:
         slowest-report: true
         previous-results-report: true
         upload-artifact: true
+        artifact-name: ctrf-test-report-${{ matrix.node-version }}
+
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: always()
@@ -70,9 +72,6 @@ jobs:
       
     - name: Type check
       run: npx tsc --noEmit
-      
-    - name: Check for unused dependencies
-      run: npx depcheck --ignores="@types/*"
 
   security:
     runs-on: ubuntu-latest

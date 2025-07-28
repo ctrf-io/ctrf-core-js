@@ -9,8 +9,8 @@ Common JavaScript library for working with CTRF reports, including type definiti
 <p style="font-size: 16px;">You can support the project with a follow and a star</p>
 
 <div style="margin-top: 1.5rem;">
-<a href="https://github.com/ctrf-io/ctrf-cli">
-<img src="https://img.shields.io/github/stars/ctrf-io/ctrf-cli?style=for-the-badge&color=2ea043" alt="GitHub stars">
+<a href="https://github.com/ctrf-io/ctrf-core-js">
+<img src="https://img.shields.io/github/stars/ctrf-io/ctrf-core-js?style=for-the-badge&color=2ea043" alt="GitHub stars">
 </a>
 <a href="https://github.com/ctrf-io">
 <img src="https://img.shields.io/github/followers/ctrf-io?style=for-the-badge&color=2ea043" alt="GitHub followers">
@@ -29,6 +29,21 @@ Explore more <a href="https://www.ctrf.io/integrations">integrations</a>
 
 ```sh
 npm install ctrf@0.0.13-next.0
+```
+
+## TypeScript Types
+
+The library exports comprehensive TypeScript types for working with CTRF reports:
+
+```typescript
+import type { Report, Test, Insights } from 'ctrf';
+
+function analyzeReport(report: Report): void {
+  const flakyTests = report.results.tests.filter((test: Test) => test.flaky);
+  const insights = report.insights as Insights;
+  
+  console.log(`Flaky rate: ${insights?.flakyRate.current}`);
+}
 ```
 
 ## API Reference
@@ -202,61 +217,6 @@ Formats an InsightsMetric as percentage strings for display.
 - `decimals` - Number of decimal places (default: 2)
 
 **Returns:** Object with formatted percentage strings for current, previous, and change values
-
-## TypeScript Types
-
-The library exports comprehensive TypeScript types for working with CTRF reports:
-
-### Core Types
-
-#### `Report`
-The main CTRF report interface containing all test results and metadata.
-
-#### `Results`
-Contains the test results including tool information, summary, and test array.
-
-#### `Summary`
-Test execution summary with counts and timing information.
-
-#### `Test`
-Individual test result with status, duration, metadata, and optional insights.
-
-#### `Environment`
-Environment information including build details, OS, and repository info.
-
-#### `Tool`
-Information about the testing tool that generated the report.
-
-### Insights Types
-
-#### `Insights`
-Report-level insights with metrics like flaky rate, fail rate, and performance data.
-
-#### `TestInsights`
-Test-level insights with individual test metrics and trends.
-
-#### `InsightsMetric`
-Metric with current, previous, and change values for trend analysis.
-
-### Utility Types
-
-#### `TestState`
-Union type for test status: `'passed' | 'failed' | 'skipped' | 'pending' | 'other'`
-
-#### `Step`, `Attachment`, `RetryAttempts`
-Additional types for detailed test execution data.
-
-**Example:**
-```typescript
-import type { Report, Test, Insights } from 'ctrf';
-
-function analyzeReport(report: Report): void {
-  const flakyTests = report.results.tests.filter((test: Test) => test.flaky);
-  const insights = report.insights as Insights;
-  
-  console.log(`Flaky rate: ${insights?.flakyRate.current}`);
-}
-```
 
 ## What is CTRF?
 
