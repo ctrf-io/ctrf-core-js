@@ -1,0 +1,393 @@
+{
+  "results": {
+    "tool": {
+      "name": "jest"
+    },
+    "summary": {
+      "tests": 34,
+      "passed": 34,
+      "failed": 0,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "start": 1753734090944,
+      "stop": 1753734092321
+    },
+    "tests": [
+      {
+        "name": "read-reports readSingleReport should read and parse a valid CTRF report file",
+        "duration": 3,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readSingleReport"
+      },
+      {
+        "name": "read-reports readSingleReport should throw error when file does not exist",
+        "duration": 12,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readSingleReport"
+      },
+      {
+        "name": "read-reports readSingleReport should throw error when file is not valid JSON",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readSingleReport"
+      },
+      {
+        "name": "read-reports readSingleReport should throw error when file is not a valid CTRF report",
+        "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readSingleReport"
+      },
+      {
+        "name": "read-reports readReportsFromDirectory should read valid CTRF reports from directory",
+        "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readReportsFromDirectory"
+      },
+      {
+        "name": "read-reports readReportsFromDirectory should throw error when directory does not exist",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readReportsFromDirectory"
+      },
+      {
+        "name": "read-reports readReportsFromDirectory should throw error when no valid CTRF reports are found",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readReportsFromDirectory"
+      },
+      {
+        "name": "read-reports readReportsFromDirectory should skip invalid files and warn about them",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readReportsFromDirectory"
+      },
+      {
+        "name": "read-reports readReportsFromGlobPattern should read valid CTRF reports from glob pattern",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readReportsFromGlobPattern"
+      },
+      {
+        "name": "read-reports readReportsFromGlobPattern should throw error when no files match the pattern",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readReportsFromGlobPattern"
+      },
+      {
+        "name": "read-reports readReportsFromGlobPattern should throw error when no valid CTRF reports are found",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports.test.ts > read-reports > readReportsFromGlobPattern"
+      },
+      {
+        "name": "run-insights utility functions isTestFlaky should return true for explicitly flaky tests",
+        "duration": 2,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > isTestFlaky"
+      },
+      {
+        "name": "run-insights utility functions isTestFlaky should return true for passed tests with retries",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > isTestFlaky"
+      },
+      {
+        "name": "run-insights utility functions isTestFlaky should return false for failed tests with retries",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > isTestFlaky"
+      },
+      {
+        "name": "run-insights utility functions isTestFlaky should return false for passed tests without retries",
+        "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > isTestFlaky"
+      },
+      {
+        "name": "run-insights utility functions isTestFlaky should return false for passed tests without retries property",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > isTestFlaky"
+      },
+      {
+        "name": "run-insights utility functions formatAsPercentage should format ratio as percentage with default 2 decimals",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > formatAsPercentage"
+      },
+      {
+        "name": "run-insights utility functions formatAsPercentage should format ratio as percentage with custom decimals",
+        "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > formatAsPercentage"
+      },
+      {
+        "name": "run-insights utility functions formatAsPercentage should handle edge cases",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > formatAsPercentage"
+      },
+      {
+        "name": "run-insights utility functions formatInsightsMetricAsPercentage should format all metric values as percentages",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > formatInsightsMetricAsPercentage"
+      },
+      {
+        "name": "run-insights utility functions formatInsightsMetricAsPercentage should handle negative change values",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > formatInsightsMetricAsPercentage"
+      },
+      {
+        "name": "run-insights utility functions formatInsightsMetricAsPercentage should handle zero change values",
+        "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > run-insights utility functions > formatInsightsMetricAsPercentage"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API basic functionality should enrich a report with run-level insights when no previous reports",
+        "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > basic functionality"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API basic functionality should add test-level insights to each test",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > basic functionality"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API baseline comparison functionality should compare against previous report by default",
+        "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > baseline comparison functionality"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API baseline comparison functionality should handle baseline by index",
+        "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > baseline comparison functionality"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API baseline comparison functionality should handle baseline by report ID",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > baseline comparison functionality"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API baseline comparison functionality should handle invalid baseline gracefully",
+        "duration": 24,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > baseline comparison functionality"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API added/removed tests tracking should track tests added since baseline",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > added/removed tests tracking"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API added/removed tests tracking should track tests removed since baseline",
+        "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > added/removed tests tracking"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API added/removed tests tracking should handle single report no added/removed tests",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > added/removed tests tracking"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API edge cases should handle empty current report",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > edge cases"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API edge cases should handle invalid current report",
+        "duration": 0,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > edge cases"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API edge cases should handle multiple previous reports",
+        "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > edge cases"
+      }
+    ]
+  }
+}

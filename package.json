@@ -1,0 +1,53 @@
+{
+  "name": "ctrf",
+  "version": "0.0.13-next.0",
+  "description": "Common library for working with CTRF reports",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "ctrf": "dist/cli.js"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "jest --testPathPattern=e2e",
+    "enrich-reports": "tsx scripts/enrich-reports.ts",
+    "docs": "typedoc",
+    "docs:watch": "typedoc --watch"
+  },
+  "files": [
+    "dist/",
+    "types/",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ctrf-io/ctrf-cli"
+  },
+  "homepage": "https://ctrf.io",
+  "author": "Matthew Thomas",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^11.0.3",
+    "typescript": "^5.8.3",
+    "yargs": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.12.7",
+    "@types/yargs": "^17.0.32",
+    "jest": "^30.0.4",
+    "jest-ctrf-json-reporter": "^0.0.9",
+    "jest-environment-node": "^30.0.4",
+    "ts-jest": "^29.4.0",
+    "tsx": "^4.19.2",
+    "typedoc": "^0.28.8",
+    "typescript": "^5.8.3"
+  }
+}
