@@ -19,7 +19,6 @@ Common JavaScript library for working with CTRF reports, including type definiti
 </div>
 
 <p style="font-size: 14px; margin: 1rem 0;">
-Maintained by <a href="https://github.com/ma11hewthomas">Matthew Thomas</a><br/>
 Contributions are very welcome! <br/>
 Explore more <a href="https://www.ctrf.io/integrations">integrations</a>
 </p>
@@ -155,14 +154,6 @@ const previousReports = readReportsFromDirectory('./historical-reports/');
 const enrichedReport = enrichReportWithInsights(currentReport, previousReports);
 console.log(`Flaky rate: ${enrichedReport.insights?.flakyRate.current}`);
 ```
-
-**Available Insights:**
-- **Flaky Rate**: Percentage of test attempts that failed due to flaky tests
-- **Fail Rate**: Percentage of tests that failed
-- **Skipped Rate**: Percentage of tests that were skipped
-- **Average Test Duration**: Average execution time per test
-- **Average Run Duration**: Average total execution time per test run
-- **Test-level Insights**: Individual metrics for each test including P95 duration
 
 ### Storing Previous Results
 
