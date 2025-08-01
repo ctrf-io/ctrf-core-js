@@ -10,13 +10,13 @@
       "pending": 0,
       "skipped": 0,
       "other": 0,
-      "start": 1753734090944,
-      "stop": 1753734092321
+      "start": 1754074440985,
+      "stop": 1754074442791
     },
     "tests": [
       {
         "name": "read-reports readSingleReport should read and parse a valid CTRF report file",
-        "duration": 3,
+        "duration": 4,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -27,7 +27,7 @@
       },
       {
         "name": "read-reports readSingleReport should throw error when file does not exist",
-        "duration": 12,
+        "duration": 6,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -38,7 +38,7 @@
       },
       {
         "name": "read-reports readSingleReport should throw error when file is not valid JSON",
-        "duration": 0,
+        "duration": 1,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -49,7 +49,7 @@
       },
       {
         "name": "read-reports readSingleReport should throw error when file is not a valid CTRF report",
-        "duration": 1,
+        "duration": 0,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -82,7 +82,7 @@
       },
       {
         "name": "read-reports readReportsFromDirectory should throw error when no valid CTRF reports are found",
-        "duration": 0,
+        "duration": 1,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -104,7 +104,7 @@
       },
       {
         "name": "read-reports readReportsFromGlobPattern should read valid CTRF reports from glob pattern",
-        "duration": 0,
+        "duration": 1,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -170,7 +170,7 @@
       },
       {
         "name": "run-insights utility functions isTestFlaky should return false for passed tests without retries",
-        "duration": 1,
+        "duration": 0,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -181,7 +181,7 @@
       },
       {
         "name": "run-insights utility functions isTestFlaky should return false for passed tests without retries property",
-        "duration": 0,
+        "duration": 1,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -203,7 +203,7 @@
       },
       {
         "name": "run-insights utility functions formatAsPercentage should format ratio as percentage with custom decimals",
-        "duration": 1,
+        "duration": 0,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -225,7 +225,7 @@
       },
       {
         "name": "run-insights utility functions formatInsightsMetricAsPercentage should format all metric values as percentages",
-        "duration": 0,
+        "duration": 1,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -247,7 +247,7 @@
       },
       {
         "name": "run-insights utility functions formatInsightsMetricAsPercentage should handle zero change values",
-        "duration": 1,
+        "duration": 0,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -258,17 +258,6 @@
       },
       {
         "name": "enrichReportWithInsights - Main API basic functionality should enrich a report with run-level insights when no previous reports",
-        "duration": 1,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > basic functionality"
-      },
-      {
-        "name": "enrichReportWithInsights - Main API basic functionality should add test-level insights to each test",
         "duration": 0,
         "status": "passed",
         "rawStatus": "passed",
@@ -279,8 +268,19 @@
         "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > basic functionality"
       },
       {
-        "name": "enrichReportWithInsights - Main API baseline comparison functionality should compare against previous report by default",
+        "name": "enrichReportWithInsights - Main API basic functionality should add test-level insights to each test",
         "duration": 1,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/__tests__/run-insights.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "run-insights.test.ts > enrichReportWithInsights - Main API > basic functionality"
+      },
+      {
+        "name": "enrichReportWithInsights - Main API baseline comparison functionality should compare against previous report by default",
+        "duration": 0,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -313,7 +313,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API baseline comparison functionality should handle invalid baseline gracefully",
-        "duration": 24,
+        "duration": 12,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -335,7 +335,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API added/removed tests tracking should track tests removed since baseline",
-        "duration": 1,
+        "duration": 0,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -357,7 +357,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API edge cases should handle empty current report",
-        "duration": 0,
+        "duration": 1,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -379,7 +379,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API edge cases should handle multiple previous reports",
-        "duration": 1,
+        "duration": 0,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { readSingleReport, readReportsFromDirectory, readReportsFromGlobPattern } from '../methods/read-reports';
+import { readReportFromFile, readReportsFromDirectory, readReportsFromGlobPattern } from '../methods/read-reports';
 import { Report } from '../../types/ctrf';
 
 // Mock fs module for testing
@@ -46,7 +46,7 @@ describe('read-reports', () => {
       mockFs.existsSync.mockReturnValue(true);
       mockFs.readFileSync.mockReturnValue(JSON.stringify(validCtrfReport));
 
-      const result = readSingleReport(filePath);
+      const result = readReportFromFile(filePath);
 
       expect(result).toEqual(validCtrfReport);
       expect(mockFs.readFileSync).toHaveBeenCalledWith(path.resolve(filePath), 'utf8');
@@ -56,7 +56,7 @@ describe('read-reports', () => {
       const filePath = '/path/to/nonexistent.json';
       mockFs.existsSync.mockReturnValue(false);
 
-      expect(() => readSingleReport(filePath)).toThrow('JSON file not found: /path/to/nonexistent.json');
+      expect(() => readReportFromFile(filePath)).toThrow('JSON file not found: /path/to/nonexistent.json');
     });
 
     it('should throw error when file is not valid JSON', () => {
@@ -64,7 +64,7 @@ describe('read-reports', () => {
       mockFs.existsSync.mockReturnValue(true);
       mockFs.readFileSync.mockReturnValue('invalid json');
 
-      expect(() => readSingleReport(filePath)).toThrow(/Failed to read or parse the file/);
+      expect(() => readReportFromFile(filePath)).toThrow(/Failed to read or parse the file/);
     });
 
     it('should throw error when file is not a valid CTRF report', () => {
@@ -72,7 +72,7 @@ describe('read-reports', () => {
       mockFs.existsSync.mockReturnValue(true);
       mockFs.readFileSync.mockReturnValue(JSON.stringify({ invalid: 'data' }));
 
-      expect(() => readSingleReport(filePath)).toThrow(/is not a valid CTRF report/);
+      expect(() => readReportFromFile(filePath)).toThrow(/is not a valid CTRF report/);
     });
   });
 

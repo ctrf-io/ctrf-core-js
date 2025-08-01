@@ -10,7 +10,7 @@ import { glob } from 'glob';
  * @returns The parsed `CtrfReport` object.
  * @throws If the file does not exist, is not a valid JSON, or does not conform to the `CtrfReport` structure.
  */
-export function readSingleReport(filePath: string): Report {
+export function readReportFromFile(filePath: string): Report {
     if (!fs.existsSync(filePath)) {
         throw new Error(`JSON file not found: ${filePath}`)
     }

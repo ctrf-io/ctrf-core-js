@@ -5,6 +5,7 @@ export {
   enrichReportWithInsights,
 } from './methods/run-insights.js';
 export { storePreviousResults } from './methods/store-previous-results.js';
+export { readReportFromFile } from './methods/read-reports.js';
 
 export type {
   Report,
