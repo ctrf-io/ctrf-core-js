@@ -2,16 +2,18 @@ export interface Report {
   reportFormat: string
   specVersion: string
   reportId?: string
-  timestamp?: number
+  timestamp?: string
   generatedBy?: string
   results: Results
   insights?: Insights
+  baseline?: Baseline
   extra?: Record<string, unknown>
 }
 
 export interface Results {
   tool: Tool
   summary: Summary
+  metrics?: Metrics
   tests: Test[]
   environment?: Environment
   extra?: Record<string, unknown>
@@ -24,9 +26,19 @@ export interface Summary {
   skipped: number
   pending: number
   other: number
+  flaky?: number
   suites?: number
   start: number
   stop: number
+  extra?: Record<string, unknown>
+}
+
+export interface Metrics {
+  passRate?: number
+  failRate?: number
+  flakyRate?: number
+  averageTestDuration?: number
+  p95TestDuration?: number
   extra?: Record<string, unknown>
 }
 
@@ -48,12 +60,12 @@ export interface Test {
   type?: string
   filePath?: string
   retries?: number
+  retryAttempts?: RetryAttempt[]
   flaky?: boolean
   stdout?: string[]
   stderr?: string[]
   threadId?: string
   attachments?: Attachment[]
-  retryAttempts?: RetryAttempts[]
   browser?: string
   device?: string
   screenshot?: string
@@ -67,9 +79,6 @@ export interface Environment {
   reportName?: string
   appName?: string
   appVersion?: string
-  osPlatform?: string
-  osRelease?: string
-  osVersion?: string
   buildId?: string
   buildName?: string
   buildNumber?: string
@@ -78,6 +87,9 @@ export interface Environment {
   repositoryUrl?: string
   commit?: string
   branchName?: string
+  osPlatform?: string
+  osRelease?: string
+  osVersion?: string
   testEnvironment?: string
   extra?: Record<string, unknown>
 }
@@ -98,42 +110,43 @@ export interface Attachment {
   name: string
   contentType: string
   path: string
+  extra?: Record<string, unknown>
 }
 
-export interface RetryAttempts {
-  retry: number; 
-  status: TestState;
-  rawStatus?: string;
-  duration?: number;
-  message?: string;
-  trace?: string;
-  snippet?: string;
-  line?: number;
-  stdout?: string[];
-  stderr?: string[];
-  start?: number;
-  stop?: number;
-  attachments?: Attachment[];
-  extra?: Record<string, unknown>;
+export interface RetryAttempt {
+  attempt: number
+  status: TestState
+  duration?: number
+  message?: string
+  trace?: string
+  line?: number
+  snippet?: string
+  stdout?: string[]
+  stderr?: string[]
+  start?: number
+  stop?: number
+  attachments?: Attachment[]
+  extra?: Record<string, unknown>
 }
 
 export interface Insights {
-  flakyRate: InsightsMetric
-  failRate: InsightsMetric
-  skippedRate: InsightsMetric
-  averageTestDuration: InsightsMetric
-  averageRunDuration: InsightsMetric
-  reportsAnalyzed: number
+  runsAnalyzed?: number
+  passRate?: InsightsMetric
+  failRate?: InsightsMetric
+  flakyRate?: InsightsMetric
+  averageRunDuration?: InsightsMetric
+  p95RunDuration?: InsightsMetric
+  averageTestDuration?: InsightsMetric
   extra?: Record<string, unknown>
 }
 
 export interface TestInsights {
-  flakyRate: InsightsMetric
-  failRate: InsightsMetric
-  skippedRate: InsightsMetric
-  averageTestDuration: InsightsMetric
-  p95Duration: InsightsMetric
-  appearsInRuns: number
+  passRate?: InsightsMetric
+  failRate?: InsightsMetric
+  flakyRate?: InsightsMetric
+  averageTestDuration?: InsightsMetric
+  p95TestDuration?: InsightsMetric
+  executedInRuns?: number
   extra?: Record<string, unknown>
 }
 
@@ -141,6 +154,13 @@ export interface InsightsMetric {
   current: number
   previous: number
   change: number
+}
+
+export interface Baseline {
+  reportId: string
+  source?: string
+  timestamp?: string
+  extra?: Record<string, unknown>
 }
 
 export type TestState =

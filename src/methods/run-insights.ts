@@ -456,11 +456,6 @@ function calculateRunInsights(
       previous: 0,
       change: 0
     },
-    skippedRate: {
-      current: calculateSkippedRateFromMetrics(runMetrics),
-      previous: 0,
-      change: 0
-    },
     averageTestDuration: {
       current: calculateAverageTestDurationFromMetrics(runMetrics),
       previous: 0,
@@ -471,7 +466,7 @@ function calculateRunInsights(
       previous: 0,
       change: 0
     },
-    reportsAnalyzed: allReportsUpToThisPoint.length,
+    runsAnalyzed: allReportsUpToThisPoint.length,
     extra: relevantMetrics
   }
 
@@ -557,10 +552,9 @@ function calculateTestInsights(
   return {
     flakyRate: calculateTestFlakyRate(testName, testMetrics),
     failRate: calculateTestFailRate(testName, testMetrics),
-    skippedRate: calculateTestSkippedRate(testName, testMetrics),
     averageTestDuration: calculateTestAverageDuration(testName, testMetrics),
-    p95Duration: calculateTestP95Duration(testName, testMetrics),
-    appearsInRuns: testMetrics.appearsInRuns,
+    p95TestDuration: calculateTestP95Duration(testName, testMetrics),
+    executedInRuns: testMetrics.appearsInRuns,
     extra: relevantMetrics
   }
 }
@@ -665,22 +659,17 @@ function calculateTestInsightsWithBaseline(
       previous: baselineFailRate,
       change: Number((currentFailRate - baselineFailRate).toFixed(4))
     },
-    skippedRate: {
-      current: currentSkippedRate,
-      previous: baselineSkippedRate,
-      change: Number((currentSkippedRate - baselineSkippedRate).toFixed(4))
-    },
     averageTestDuration: {
       current: currentAverageDuration,
       previous: baselineAverageDuration,
       change: Number((currentAverageDuration - baselineAverageDuration).toFixed(2))
     },
-    p95Duration: {
+    p95TestDuration: {
       current: currentP95Duration,
       previous: baselineP95Duration,
       change: Number((currentP95Duration - baselineP95Duration).toFixed(2))
     },
-    appearsInRuns: currentTestMetrics.appearsInRuns,
+    executedInRuns: currentTestMetrics.appearsInRuns,
     extra: relevantMetrics
   }
 }
@@ -764,31 +753,26 @@ function calculateReportInsightsBaseline(
 
   return {
     flakyRate: {
-      current: currentInsights.flakyRate.current,
-      previous: previousInsights.flakyRate.current,
-      change: Number((currentInsights.flakyRate.current - previousInsights.flakyRate.current).toFixed(4))
+      current: currentInsights?.flakyRate?.current ?? 0,
+      previous: previousInsights?.flakyRate?.current ?? 0,
+      change: Number(((currentInsights?.flakyRate?.current ?? 0) - (previousInsights?.flakyRate?.current ?? 0)).toFixed(4))
     },
     failRate: {
-      current: currentInsights.failRate.current,
-      previous: previousInsights.failRate.current,
-      change: Number((currentInsights.failRate.current - previousInsights.failRate.current).toFixed(4))
-    },
-    skippedRate: {
-      current: currentInsights.skippedRate.current,
-      previous: previousInsights.skippedRate.current,
-      change: Number((currentInsights.skippedRate.current - previousInsights.skippedRate.current).toFixed(4))
+      current: currentInsights?.failRate?.current ?? 0,
+      previous: previousInsights?.failRate?.current ?? 0,
+      change: Number(((currentInsights?.failRate?.current ?? 0) - (previousInsights?.failRate?.current ?? 0)).toFixed(4))
     },
     averageTestDuration: {
-      current: currentInsights.averageTestDuration.current,
-      previous: previousInsights.averageTestDuration.current,
-      change: Number((currentInsights.averageTestDuration.current - previousInsights.averageTestDuration.current).toFixed(2))
+      current: currentInsights?.averageTestDuration?.current ?? 0,
+      previous: previousInsights?.averageTestDuration?.current ?? 0,
+      change: Number(((currentInsights?.averageTestDuration?.current ?? 0) - (previousInsights?.averageTestDuration?.current ?? 0)).toFixed(2))
     },
     averageRunDuration: {
-      current: currentInsights.averageRunDuration.current,
-      previous: previousInsights.averageRunDuration.current,
-      change: Number((currentInsights.averageRunDuration.current - previousInsights.averageRunDuration.current).toFixed(2))
+        current: currentInsights?.averageRunDuration?.current ?? 0,
+      previous: previousInsights?.averageRunDuration?.current ?? 0,
+      change: Number(((currentInsights?.averageRunDuration?.current ?? 0) - (previousInsights?.averageRunDuration?.current ?? 0)).toFixed(2))
     },
-    reportsAnalyzed: currentInsights.reportsAnalyzed,
+    runsAnalyzed: currentInsights?.runsAnalyzed ?? 0,
     extra: currentInsights.extra
   }
 }

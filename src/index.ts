@@ -15,7 +15,7 @@ export type {
   Tool,
   Step,
   Attachment,
-  RetryAttempts,
+  RetryAttempt,
   Insights,
   TestInsights,
   InsightsMetric,

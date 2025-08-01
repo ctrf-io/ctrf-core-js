@@ -13,6 +13,8 @@
   },
   "scripts": {
     "build": "tsc",
+    "lint": "biome check .",
+		"lint:fix": "biome check . --write src/helpers/string.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -39,6 +41,7 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.1.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^20.12.7",
     "@types/yargs": "^17.0.32",

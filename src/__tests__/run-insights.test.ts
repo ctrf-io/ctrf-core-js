@@ -159,14 +159,14 @@ describe('enrichReportWithInsights - Main API', () => {
       const result = enrichReportWithInsights(currentReport, []);
       
       expect(result.insights).toBeDefined();
-      expect(result.insights!.flakyRate.current).toBeGreaterThan(0);
-      expect(result.insights!.failRate.current).toBeGreaterThan(0);
-      expect(result.insights!.averageTestDuration.current).toBe(150); // (100+200+150)/3
-      expect(result.insights!.reportsAnalyzed).toBe(1);
+      expect(result.insights!.flakyRate?.current).toBeGreaterThan(0);
+      expect(result.insights!.failRate?.current).toBeGreaterThan(0);
+      expect(result.insights!.averageTestDuration?.current).toBe(150); // (100+200+150)/3
+      expect(result.insights!.runsAnalyzed).toBe(1);
       
       // Should have no baseline comparison (previous/change should be 0)
-      expect(result.insights!.flakyRate.previous).toBe(0);
-      expect(result.insights!.flakyRate.change).toBe(0);
+      expect(result.insights!.flakyRate?.previous).toBe(0);
+      expect(result.insights!.flakyRate?.change).toBe(0);
     });
 
     it('should add test-level insights to each test', () => {
@@ -181,10 +181,10 @@ describe('enrichReportWithInsights - Main API', () => {
       expect(result.results.tests[0].insights).toBeDefined();
       expect(result.results.tests[1].insights).toBeDefined();
       
-      expect(result.results.tests[0].insights!.failRate.current).toBe(0);
-      expect(result.results.tests[1].insights!.failRate.current).toBe(1);
-      expect(result.results.tests[0].insights!.averageTestDuration.current).toBe(100);
-      expect(result.results.tests[1].insights!.averageTestDuration.current).toBe(200);
+      expect(result.results.tests[0].insights!.failRate?.current).toBe(0);
+      expect(result.results.tests[1].insights!.failRate?.current).toBe(1);
+      expect(result.results.tests[0].insights!.averageTestDuration?.current).toBe(100);
+      expect(result.results.tests[1].insights!.averageTestDuration?.current).toBe(200);
     });
   });
 
@@ -215,10 +215,10 @@ describe('enrichReportWithInsights - Main API', () => {
       const result = enrichReportWithInsights(currentReport, [previousReport]);
       
              expect(result.insights).toBeDefined();
-       expect(result.insights!.failRate.current).toBe(0.5); // Overall: 2 passed + 2 failed = 50% fail rate
-       expect(result.insights!.failRate.previous).toBe(1); // Previous: all failed
-       expect(result.insights!.failRate.change).toBe(-0.5); // Improvement of 50%
-       expect(result.insights!.reportsAnalyzed).toBe(2);
+       expect(result.insights!.failRate?.current).toBe(0.5); // Overall: 2 passed + 2 failed = 50% fail rate
+       expect(result.insights!.failRate?.previous).toBe(1); // Previous: all failed
+       expect(result.insights!.failRate?.change).toBe(-0.5); // Improvement of 50%
+       expect(result.insights!.runsAnalyzed).toBe(2);
     });
 
     it('should handle baseline by index', () => {
@@ -233,9 +233,9 @@ describe('enrichReportWithInsights - Main API', () => {
       // Use index 1 (second previous report)
       const result = enrichReportWithInsights(currentReport, [previousReport1, previousReport2], 1);
       
-             expect(result.insights!.failRate.current).toBe(0.3333); // 1 passed + 1 failed + 1 passed = 1/3 fail rate
-       expect(result.insights!.failRate.previous).toBe(0); // previous2 had no failures  
-       expect(result.insights!.failRate.change).toBe(0.3333);
+             expect(result.insights!.failRate?.current).toBe(0.3333); // 1 passed + 1 failed + 1 passed = 1/3 fail rate
+       expect(result.insights!.failRate?.previous).toBe(0); // previous2 had no failures  
+       expect(result.insights!.failRate?.change).toBe(0.3333);
     });
 
     it('should handle baseline by report ID', () => {
@@ -252,9 +252,9 @@ describe('enrichReportWithInsights - Main API', () => {
       
       const result = enrichReportWithInsights(currentReport, [previousReport], "12345");
       
-             expect(result.insights!.failRate.current).toBe(0.5); // 1 passed + 1 failed = 50% fail rate  
-       expect(result.insights!.failRate.previous).toBe(1);
-       expect(result.insights!.failRate.change).toBe(-0.5);
+             expect(result.insights!.failRate?.current).toBe(0.5); // 1 passed + 1 failed = 50% fail rate  
+       expect(result.insights!.failRate?.previous).toBe(1);
+       expect(result.insights!.failRate?.change).toBe(-0.5);
     });
 
     it('should handle invalid baseline gracefully', () => {
@@ -266,13 +266,13 @@ describe('enrichReportWithInsights - Main API', () => {
       
       // Invalid index
       const result1 = enrichReportWithInsights(currentReport, [previousReport], 999);
-      expect(result1.insights!.failRate.previous).toBe(0);
-      expect(result1.insights!.failRate.change).toBe(0);
+      expect(result1.insights!.failRate?.previous).toBe(0);
+      expect(result1.insights!.failRate?.change).toBe(0);
       
       // Invalid ID
       const result2 = enrichReportWithInsights(currentReport, [previousReport], "invalid-id");
-      expect(result2.insights!.failRate.previous).toBe(0);
-      expect(result2.insights!.failRate.change).toBe(0);
+      expect(result2.insights!.failRate?.previous).toBe(0);
+      expect(result2.insights!.failRate?.change).toBe(0);
     });
   });
 
@@ -336,8 +336,8 @@ describe('enrichReportWithInsights - Main API', () => {
       const result = enrichReportWithInsights(currentReport, [previousReport]);
       
              expect(result.insights).toBeDefined();
-       expect(result.insights!.failRate.current).toBe(0); // Previous report has 1 test, current has 0, so 0 failed overall
-       expect(result.insights!.averageTestDuration.current).toBe(100); // Previous report had 1 test with 100ms duration
+       expect(result.insights!.failRate?.current).toBe(0); // Previous report has 1 test, current has 0, so 0 failed overall
+       expect(result.insights!.averageTestDuration?.current).toBe(100); // Previous report had 1 test with 100ms duration
     });
 
     it('should handle invalid current report', () => {
@@ -363,9 +363,9 @@ describe('enrichReportWithInsights - Main API', () => {
       
       const result = enrichReportWithInsights(currentReport, previousReports);
       
-      expect(result.insights!.reportsAnalyzed).toBe(4); // Current + 3 previous
-      expect(result.insights!.failRate.current).toBeDefined();
-      expect(result.insights!.failRate.previous).toBeDefined();
+      expect(result.insights!.runsAnalyzed).toBe(4); // Current + 3 previous
+      expect(result.insights!.failRate?.current).toBeDefined();
+      expect(result.insights!.failRate?.previous).toBeDefined();
     });
   });
 }); 
