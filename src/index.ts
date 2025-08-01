@@ -20,6 +20,6 @@ export type {
   Insights,
   TestInsights,
   InsightsMetric,
-  TestState
+  TestStatus
 } from '../types/ctrf.js';
 

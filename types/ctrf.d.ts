@@ -45,7 +45,7 @@ export interface Metrics {
 export interface Test {
   id?: string
   name: string
-  status: TestState
+  status: TestStatus
   duration: number
   start?: number
   stop?: number
@@ -102,7 +102,7 @@ export interface Tool {
 
 export interface Step {
   name: string
-  status: TestState
+  status: TestStatus
   extra?: Record<string, unknown>
 }
 
@@ -115,7 +115,7 @@ export interface Attachment {
 
 export interface RetryAttempt {
   attempt: number
-  status: TestState
+  status: TestStatus
   duration?: number
   message?: string
   trace?: string
@@ -163,7 +163,7 @@ export interface Baseline {
   extra?: Record<string, unknown>
 }
 
-export type TestState =
+export type TestStatus =
   | 'passed'
   | 'failed'
   | 'skipped'
