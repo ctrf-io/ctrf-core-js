@@ -1,5 +1,5 @@
 import { InsightsMetric,  Report, Test, TestInsights, Insights } from "../../types/ctrf.js"
-import { sortReportsByTimestamp } from "./utilities/sort-reports"
+import { sortReportsByTimestamp } from "./utilities/sort-reports.js"
 
 export interface SimplifiedTestData {
   name: string
