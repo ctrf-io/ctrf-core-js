@@ -49,7 +49,7 @@ function analyzeReport(report: Report): void {
 
 ### Reading Reports
 
-#### `readSingleReport(filePath: string): Report`
+#### `readReportFromFile(filePath: string): Report`
 
 Reads and parses a single CTRF report file from a specified file path.
 
@@ -62,9 +62,9 @@ Reads and parses a single CTRF report file from a specified file path.
 
 **Example:**
 ```typescript
-import { readSingleReport } from 'ctrf';
+import { readReportFromFile } from 'ctrf';
 
-const report = readSingleReport('./test-results.json');
+const report = readReportFromFile('./test-results.json');
 console.log(`Found ${report.results.summary.tests} tests`);
 ```
 
@@ -146,9 +146,9 @@ Enriches a CTRF report with comprehensive insights by analyzing current and hist
 
 **Example:**
 ```typescript
-import { enrichReportWithInsights, readSingleReport } from 'ctrf';
+import { enrichReportWithInsights, readReportFromFile } from 'ctrf';
 
-const currentReport = readSingleReport('./current-report.json');
+const currentReport = readReportFromFile('./current-report.json');
 const previousReports = readReportsFromDirectory('./historical-reports/');
 
 const enrichedReport = enrichReportWithInsights(currentReport, previousReports);
@@ -169,13 +169,38 @@ Stores previous test run results in the current report's metadata. Extracts key 
 
 **Example:**
 ```typescript
-import { storePreviousResults, readSingleReport } from 'ctrf';
+import { storePreviousResults, readReportFromFile } from 'ctrf';
 
-const currentReport = readSingleReport('./current-report.json');
+const currentReport = readReportFromFile('./current-report.json');
 const previousReports = readReportsFromDirectory('./historical-reports/');
 
 const reportWithHistory = storePreviousResults(currentReport, previousReports);
 console.log(`Stored ${reportWithHistory.extra?.previousResults?.length} previous results`);
+```
+
+### Sorting Reports
+
+#### `sortReportsByTimestamp(reports: Report[], order?: SortOrder): Report[]`
+
+Sorts CTRF reports by their timestamp using a fallback strategy.
+
+**Parameters:**
+- `reports` - Array of CTRF reports to sort
+- `order` - Sort order: `SortOrder.DESC` for newest first (default), `SortOrder.ASC` for oldest first
+
+**Returns:** A new array with reports sorted by timestamp
+
+**Example:**
+```typescript
+import { sortReportsByTimestamp, SortOrder } from 'ctrf';
+
+const unsortedReports = [report1, report2, report3];
+
+const newestFirst = sortReportsByTimestamp(unsortedReports);
+// newestFirst[0] will be the most recent report
+
+const oldestFirst = sortReportsByTimestamp(unsortedReports, SortOrder.ASC);
+// oldestFirst[0] will be the oldest report
 ```
 
 ### Utility Functions

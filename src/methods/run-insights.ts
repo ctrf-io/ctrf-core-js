@@ -1,4 +1,5 @@
 import { InsightsMetric,  Report, Test, TestInsights, Insights } from "../../types/ctrf.js"
+import { sortReportsByTimestamp } from "./utilities/sort-reports"
 
 export interface SimplifiedTestData {
   name: string
@@ -884,98 +885,53 @@ function setTestsAddedToInsights(
 // ========================================
 
 /**
- * Helper function to find the baseline report based on the baseline parameter.
- *
- * @param reportsWithRunInsights - Array of reports with run insights (current first, then previous)
- * @param baseline - Baseline specification (undefined, number, or string)
- * @returns The baseline report to use for comparison, or null if not found
- */
-function findBaselineReport(
-  reportsWithRunInsights: Report[],
-  baseline?: number | string
-): Report | null {
-  if (baseline === undefined) {
-    return reportsWithRunInsights[1] || null
-  }
-
-  if (typeof baseline === 'number') {
-    const targetIndex = baseline + 1
-    if (targetIndex < reportsWithRunInsights.length) {
-      return reportsWithRunInsights[targetIndex]
-    }
-    console.warn(`Baseline index ${baseline} is out of range. Available previous reports: ${reportsWithRunInsights.length - 1}`)
-    return null
-  }
-
-  if (typeof baseline === 'string') {
-    const report = reportsWithRunInsights.find(
-      report => report.results?.summary?.start?.toString() === baseline
-    )
-    if (!report) {
-      console.warn(`No report found with start timestamp ID: ${baseline}`)
-      return null
-    }
-    return report
-  }
-
-  return null
-}
-
-/**
  * @param currentReport - The current CTRF report to enrich
- * @param previousReports - Array of historical CTRF reports (ordered newest to oldest)
- * @param baseline - Optional baseline specification:
- *   - undefined: Use most recent previous report (default)
- *   - number: Use report at this index in previousReports array (0 = most recent)
- *   - string: Use reportId
- * @returns The current report fully enriched with run-level insights, test-level insights, and baseline comparisons
+ * @param previousReports - Array of historical CTRF reports
+ * @param baseline - Optional baseline report to compare against. If not provided, no baseline comparisons are made.
+ * @returns The current report fully enriched with run-level insights, test-level insights, and baseline comparisons (if baseline provided)
  */
 export function enrichReportWithInsights(
     currentReport: Report,
   previousReports: Report[] = [],
-  baseline?: number | string
+  baseline?: Report
 ): Report {
   if (!validateReportForInsights(currentReport)) {
     console.warn('Current report is not valid for insights calculation')
     return currentReport
   }
 
-  const allReports = [currentReport, ...previousReports]
+  // Sort previous reports by summary.stop timestamp (newest first)
+  const sortedPreviousReports = sortReportsByTimestamp(previousReports)
+
+  const allReports = [currentReport, ...sortedPreviousReports]
   const reportsWithRunInsights = calculateRunInsights([...allReports])
   
-  const baselineReport = previousReports.length > 0 ? 
-    findBaselineReport(reportsWithRunInsights, baseline) : null
-
-  const currentReportWithRunInsights = reportsWithRunInsights[0] // Current report is first
+  const currentReportWithRunInsights = reportsWithRunInsights[0]
   const currentReportWithTestInsights = addTestInsightsWithBaselineToCurrentReport(
     currentReportWithRunInsights,
-    previousReports,
-    baselineReport || undefined
+    sortedPreviousReports,
+    baseline
   )
 
-  if (previousReports.length === 0) {
-    return currentReportWithTestInsights
-  }
-
-  if (!baselineReport) {
+  if (!baseline) {
     return currentReportWithTestInsights
   }
   
   let baselineInsights = calculateReportInsightsBaseline(
     currentReportWithTestInsights,
-    baselineReport
+    baseline
   )
 
   baselineInsights = setTestsAddedToInsights(
     baselineInsights,
     currentReportWithTestInsights,
-    baselineReport
+    baseline
   )
   
   baselineInsights = setTestsRemovedToInsights(
     baselineInsights,
     currentReportWithTestInsights,
-    baselineReport
+    baseline
   )
 
   return {

@@ -4,6 +4,7 @@ export { readReportsFromGlobPattern } from './methods/read-reports.js';
 export { 
   enrichReportWithInsights,
 } from './methods/run-insights.js';
+export { sortReportsByTimestamp, SortOrder } from './methods/utilities/sort-reports.js';
 export { storePreviousResults } from './methods/store-previous-results.js';
 export { readReportFromFile } from './methods/read-reports.js';
 
