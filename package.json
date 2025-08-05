@@ -12,26 +12,25 @@
     "node": ">=20.19.0"
   },
   "scripts": {
-    "build": "tsc",
-    "lint": "biome check .",
-		"lint:fix": "biome check . --write src/helpers/string.ts",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "test:e2e": "jest --testPathPattern=e2e",
-    "enrich-reports": "tsx scripts/enrich-reports.ts",
+    "build": "tsc -p .",
+    "build:check": "tsc -p . -noEmit",
+    "build:watch": "tsc -p . --watch",
+    "clean": "rm -rf dist && rm -rf coverage && rm -rf ctrf",
+    "test": "vitest run",
+    "lint": "eslint . --ext .ts --fix",
+    "lint:check": "eslint . --ext .ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "docs": "typedoc",
-    "docs:watch": "typedoc --watch"
+    "docs:watch": "typedoc --watch",
+    "all": "npm run build:check && npm run test && npm run lint && npm run format && npm run docs && npm run build"
   },
   "files": [
     "dist/",
     "types/",
     "README.md"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ctrf-io/ctrf-cli"
-  },
+  "repository": "github:ctrf-io/ctrf-core-js",
   "homepage": "https://ctrf.io",
   "author": "Matthew Thomas",
   "license": "MIT",
@@ -41,16 +40,16 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.1.1",
-    "@types/jest": "^30.0.0",
     "@types/node": "^20.12.7",
     "@types/yargs": "^17.0.32",
-    "jest": "^30.0.4",
-    "jest-ctrf-json-reporter": "^0.0.9",
-    "jest-environment-node": "^30.0.4",
-    "ts-jest": "^29.4.0",
-    "tsx": "^4.19.2",
-    "typedoc": "^0.28.8",
-    "typescript": "^5.8.3"
+    "@eslint/js": "^9.32.0",
+    "eslint": "^9.32.0",
+    "typescript-eslint": "^8.38.0",
+    "typedoc": "^0.28.9",
+    "typedoc-plugin-markdown": "^4.8.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4",
+    "@d2t/vitest-ctrf-json-reporter": "^1.2.0",
+    "prettier": "^3.5.3"
   }
 }
