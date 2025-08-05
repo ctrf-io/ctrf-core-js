@@ -27,7 +27,7 @@ Explore more <a href="https://www.ctrf.io/integrations">integrations</a>
 ## Installation
 
 ```sh
-npm install ctrf@0.0.13-next.1
+npm install ctrf@0.0.13-next.5
 ```
 
 ## API reference
