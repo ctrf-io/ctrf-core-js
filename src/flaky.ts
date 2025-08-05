@@ -1,5 +1,6 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
+import { Test } from "../types/ctrf.js";
 
 export async function identifyFlakyTests(filePath: string) {
   try {
@@ -10,20 +11,22 @@ export async function identifyFlakyTests(filePath: string) {
       return;
     }
 
-    const fileContent = fs.readFileSync(resolvedFilePath, 'utf8');
+    const fileContent = fs.readFileSync(resolvedFilePath, "utf8");
     const report = JSON.parse(fileContent);
 
-    const flakyTests = report.results.tests.filter((test: any) => test.flaky === true);
+    const flakyTests = report.results.tests.filter(
+      (test: Test) => test.flaky === true,
+    );
 
     if (flakyTests.length > 0) {
       console.log(`Found ${flakyTests.length} flaky test(s):`);
-      flakyTests.forEach((test: any) => {
+      flakyTests.forEach((test: Test) => {
         console.log(`- Test Name: ${test.name}, Retries: ${test.retries}`);
       });
     } else {
       console.log(`No flaky tests found in ${resolvedFilePath}.`);
     }
   } catch (error) {
-    console.error('Error identifying flaky tests:', error);
+    console.error("Error identifying flaky tests:", error);
   }
 }

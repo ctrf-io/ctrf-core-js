@@ -13,5 +13,11 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*"],
-  "exclude": ["src/__tests__/**/*", "dist/**/*", "node_modules/**/*"]
+  "exclude": [
+    "src/__tests__/**/*",
+    "dist/**/*",
+    "node_modules/**/*",
+    "src/test-utils/**/*",
+    "scripts/**/*"
+  ]
 }

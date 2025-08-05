@@ -9,7 +9,7 @@ import { CTRF_REPORT_FORMAT, CTRF_SPEC_VERSION } from "../constants.js";
  */
 export function mergeReports(reports: Report[]): Report {
   if (!reports || reports.length === 0) {
-    throw new Error('No reports provided for merging.');
+    throw new Error("No reports provided for merging.");
   }
 
   const mergedReport: Report = {
@@ -39,11 +39,11 @@ export function mergeReports(reports: Report[]): Report {
 
     mergedReport.results.summary.start = Math.min(
       mergedReport.results.summary.start,
-      summary.start
+      summary.start,
     );
     mergedReport.results.summary.stop = Math.max(
       mergedReport.results.summary.stop,
-      summary.stop
+      summary.stop,
     );
 
     mergedReport.results.tests.push(...tests);

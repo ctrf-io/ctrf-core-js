@@ -1,6 +1,6 @@
 // This should be added to library, as not standard CTRF thing
 
-import { Environment, Report } from '../../types/ctrf.js';
+import { Environment, Report } from "../../types/ctrf.js";
 
 /**
  * Interface for a previous result entry stored in the current report
@@ -9,9 +9,9 @@ interface PreviousResult {
   start: number;
   stop: number;
   buildId?: string;
-  buildName?: string
-  buildNumber?: string
-  buildUrl?: string
+  buildName?: string;
+  buildNumber?: string;
+  buildUrl?: string;
   result: string;
   tests: number;
   passed: number;
@@ -26,17 +26,19 @@ interface PreviousResult {
 /**
  * Stores previous results in the current report's previousResults array.
  * Extracts key metrics from each previous report and adds them to the current report.
- * 
+ *
  * @param currentReport The current CTRF report to enrich with previous results
  * @param previousReports Array of previous CTRF reports to extract metrics from
  * @returns The current report with previousResults populated
  */
 export function storePreviousResults(
-    currentReport: Report, 
-  previousReports: Report[]
+  currentReport: Report,
+  previousReports: Report[],
 ): Report {
   if (!currentReport || !Array.isArray(previousReports)) {
-    throw new Error('Invalid input: currentReport must be a valid CTRF report and previousReports must be an array');
+    throw new Error(
+      "Invalid input: currentReport must be a valid CTRF report and previousReports must be an array",
+    );
   }
 
   if (!currentReport.extra) {
@@ -45,23 +47,26 @@ export function storePreviousResults(
 
   const previousResults: PreviousResult[] = previousReports.map((report) => {
     if (!report.results || !report.results.summary) {
-      throw new Error('Invalid previous report: missing results or summary');
+      throw new Error("Invalid previous report: missing results or summary");
     }
 
     const summary = report.results.summary;
     const tests = report.results.tests || [];
-    
-    const flakyCount = tests.filter(test => test.flaky === true).length;
-    
+
+    const flakyCount = tests.filter((test) => test.flaky === true).length;
+
     const duration = summary.stop - summary.start;
-    
-    let result = 'passed';
+
+    let result = "passed";
     if (summary.failed > 0) {
-      result = 'failed';
-    } else if ((summary.skipped > 0 || summary.pending > 0 || summary.other > 0) && summary.passed === 0) {
-      result = 'skipped';
+      result = "failed";
+    } else if (
+      (summary.skipped > 0 || summary.pending > 0 || summary.other > 0) &&
+      summary.passed === 0
+    ) {
+      result = "skipped";
     } else if (summary.tests === 0) {
-      result = 'empty';
+      result = "empty";
     }
 
     return {
@@ -79,7 +84,7 @@ export function storePreviousResults(
       flaky: flakyCount,
       other: summary.other,
       duration,
-      environment: report.results.environment
+      environment: report.results.environment,
     };
   });
 
