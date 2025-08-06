@@ -167,6 +167,9 @@ export interface Baseline {
   reportId: string
   source?: string
   timestamp?: string
+  buildName?: string
+  buildNumber?: string
+  buildUrl?: string
   extra?: Record<string, unknown>
 }
 

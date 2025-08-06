@@ -1,8 +1,8 @@
-**CTRF v0.0.13-next.5**
+**CTRF v0.0.13-next.6**
 
 ***
 
-# CTRF v0.0.13-next.5
+# CTRF v0.0.13-next.6
 
 ## Enumerations
 
