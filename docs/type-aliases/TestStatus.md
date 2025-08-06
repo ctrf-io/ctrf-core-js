@@ -8,4 +8,4 @@
 
 > **TestStatus** = `"passed"` \| `"failed"` \| `"skipped"` \| `"pending"` \| `"other"`
 
-Defined in: [types/ctrf.d.ts:173](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L173)
+Defined in: [types/ctrf.d.ts:174](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L174)

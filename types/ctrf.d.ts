@@ -166,7 +166,6 @@ export interface InsightsMetric {
 export interface Baseline {
   reportId: string
   source?: string
-  
   timestamp?: string
   extra?: Record<string, unknown>
 }
