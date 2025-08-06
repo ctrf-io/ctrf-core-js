@@ -10,134 +10,13 @@
       "pending": 0,
       "skipped": 0,
       "other": 0,
-      "start": 1754419316297,
-      "stop": 1754419316616
+      "start": 1754483866915,
+      "stop": 1754483867273
     },
     "tests": [
       {
-        "name": "read-reports > readSingleReport > should read and parse a valid CTRF report file",
-        "duration": 2.2063339999999982,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readSingleReport > should read and parse a valid CTRF report file"
-      },
-      {
-        "name": "read-reports > readSingleReport > should throw error when file does not exist",
-        "duration": 0.652499999999975,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readSingleReport > should throw error when file does not exist"
-      },
-      {
-        "name": "read-reports > readSingleReport > should throw error when file is not valid JSON",
-        "duration": 0.14775000000000205,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readSingleReport > should throw error when file is not valid JSON"
-      },
-      {
-        "name": "read-reports > readSingleReport > should throw error when file is not a valid CTRF report",
-        "duration": 0.14970800000000395,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readSingleReport > should throw error when file is not a valid CTRF report"
-      },
-      {
-        "name": "read-reports > readReportsFromDirectory > should read valid CTRF reports from directory",
-        "duration": 0.4689999999999941,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readReportsFromDirectory > should read valid CTRF reports from directory"
-      },
-      {
-        "name": "read-reports > readReportsFromDirectory > should throw error when directory does not exist",
-        "duration": 0.146000000000015,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readReportsFromDirectory > should throw error when directory does not exist"
-      },
-      {
-        "name": "read-reports > readReportsFromDirectory > should throw error when no valid CTRF reports are found",
-        "duration": 0.12595799999999713,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readReportsFromDirectory > should throw error when no valid CTRF reports are found"
-      },
-      {
-        "name": "read-reports > readReportsFromDirectory > should skip invalid files and warn about them",
-        "duration": 0.4516670000000147,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readReportsFromDirectory > should skip invalid files and warn about them"
-      },
-      {
-        "name": "read-reports > readReportsFromGlobPattern > should read valid CTRF reports from glob pattern",
-        "duration": 0.3280419999999822,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readReportsFromGlobPattern > should read valid CTRF reports from glob pattern"
-      },
-      {
-        "name": "read-reports > readReportsFromGlobPattern > should throw error when no files match the pattern",
-        "duration": 0.15316699999999628,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readReportsFromGlobPattern > should throw error when no files match the pattern"
-      },
-      {
-        "name": "read-reports > readReportsFromGlobPattern > should throw error when no valid CTRF reports are found",
-        "duration": 0.16012499999999363,
-        "status": "passed",
-        "rawStatus": "passed",
-        "type": "unit",
-        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
-        "retries": 0,
-        "flaky": false,
-        "suite": "read-reports > readReportsFromGlobPattern > should throw error when no valid CTRF reports are found"
-      },
-      {
         "name": "run-insights utility functions > isTestFlaky > should return true for explicitly flaky tests",
-        "duration": 0.765166999999991,
+        "duration": 0.8939579999999978,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -148,7 +27,7 @@
       },
       {
         "name": "run-insights utility functions > isTestFlaky > should return true for passed tests with retries",
-        "duration": 0.07841600000000426,
+        "duration": 0.08141699999998764,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -159,7 +38,7 @@
       },
       {
         "name": "run-insights utility functions > isTestFlaky > should return false for failed tests with retries",
-        "duration": 0.05120900000000006,
+        "duration": 0.05637500000000273,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -170,7 +49,7 @@
       },
       {
         "name": "run-insights utility functions > isTestFlaky > should return false for passed tests without retries",
-        "duration": 0.04654199999998809,
+        "duration": 0.04708400000001234,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -181,7 +60,7 @@
       },
       {
         "name": "run-insights utility functions > isTestFlaky > should return false for passed tests without retries property",
-        "duration": 0.045417000000014696,
+        "duration": 0.044582999999988715,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -192,7 +71,7 @@
       },
       {
         "name": "run-insights utility functions > formatAsPercentage > should format ratio as percentage with default 2 decimals",
-        "duration": 0.11312499999999659,
+        "duration": 0.11079200000000355,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -203,7 +82,7 @@
       },
       {
         "name": "run-insights utility functions > formatAsPercentage > should format ratio as percentage with custom decimals",
-        "duration": 0.06729200000000901,
+        "duration": 0.07075000000000387,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -214,7 +93,7 @@
       },
       {
         "name": "run-insights utility functions > formatAsPercentage > should handle edge cases",
-        "duration": 0.06258399999998687,
+        "duration": 0.06837499999997476,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -225,7 +104,7 @@
       },
       {
         "name": "run-insights utility functions > formatInsightsMetricAsPercentage > should format all metric values as percentages",
-        "duration": 0.4240000000000066,
+        "duration": 0.4580829999999878,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -236,7 +115,7 @@
       },
       {
         "name": "run-insights utility functions > formatInsightsMetricAsPercentage > should handle negative change values",
-        "duration": 0.06345799999999713,
+        "duration": 0.07058299999999917,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -247,7 +126,7 @@
       },
       {
         "name": "run-insights utility functions > formatInsightsMetricAsPercentage > should handle zero change values",
-        "duration": 0.05437499999999318,
+        "duration": 0.060624999999987494,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -257,19 +136,19 @@
         "suite": "run-insights utility functions > formatInsightsMetricAsPercentage > should handle zero change values"
       },
       {
-        "name": "enrichReportWithInsights - Main API > basic functionality > should enrich a report with run-level insights when no previous reports",
-        "duration": 0.7204169999999976,
+        "name": "enrichReportWithInsights - Main API > basic functionality > should enrich a report with run-level insights when no baseline reports",
+        "duration": 0.8730410000000006,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
         "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/run-insights.test.ts",
         "retries": 0,
         "flaky": false,
-        "suite": "enrichReportWithInsights - Main API > basic functionality > should enrich a report with run-level insights when no previous reports"
+        "suite": "enrichReportWithInsights - Main API > basic functionality > should enrich a report with run-level insights when no baseline reports"
       },
       {
         "name": "enrichReportWithInsights - Main API > basic functionality > should add test-level insights to each test",
-        "duration": 0.15329199999999332,
+        "duration": 0.17875000000000796,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -280,7 +159,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API > baseline comparison functionality > should compare against previous report by default",
-        "duration": 0.29349999999999454,
+        "duration": 0.33404200000001083,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -291,7 +170,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API > baseline comparison functionality > should handle baseline by index",
-        "duration": 0.13266699999999787,
+        "duration": 0.147041999999999,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -302,7 +181,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API > baseline comparison functionality > should handle baseline by report ID",
-        "duration": 0.14508299999999963,
+        "duration": 0.1214999999999975,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -313,7 +192,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API > baseline comparison functionality > should handle invalid baseline gracefully",
-        "duration": 0.7173750000000041,
+        "duration": 1.333042000000006,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -324,7 +203,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API > added/removed tests tracking > should track tests added since baseline",
-        "duration": 0.7877090000000067,
+        "duration": 0.832334000000003,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -335,7 +214,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API > added/removed tests tracking > should track tests removed since baseline",
-        "duration": 0.16516599999999926,
+        "duration": 0.18737499999997453,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -346,7 +225,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API > added/removed tests tracking > should handle single report no added/removed tests",
-        "duration": 0.08150000000000546,
+        "duration": 0.08787499999999682,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -357,7 +236,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API > edge cases > should handle empty current report",
-        "duration": 0.07158400000000142,
+        "duration": 0.08345800000000736,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -368,7 +247,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API > edge cases > should handle invalid current report",
-        "duration": 0.19087500000000546,
+        "duration": 0.20345799999995506,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -379,7 +258,7 @@
       },
       {
         "name": "enrichReportWithInsights - Main API > edge cases > should handle multiple previous reports",
-        "duration": 0.09729200000001015,
+        "duration": 0.11349999999998772,
         "status": "passed",
         "rawStatus": "passed",
         "type": "unit",
@@ -387,6 +266,127 @@
         "retries": 0,
         "flaky": false,
         "suite": "enrichReportWithInsights - Main API > edge cases > should handle multiple previous reports"
+      },
+      {
+        "name": "read-reports > readSingleReport > should read and parse a valid CTRF report file",
+        "duration": 2.735833999999983,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readSingleReport > should read and parse a valid CTRF report file"
+      },
+      {
+        "name": "read-reports > readSingleReport > should throw error when file does not exist",
+        "duration": 0.7558329999999955,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readSingleReport > should throw error when file does not exist"
+      },
+      {
+        "name": "read-reports > readSingleReport > should throw error when file is not valid JSON",
+        "duration": 0.19495799999998553,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readSingleReport > should throw error when file is not valid JSON"
+      },
+      {
+        "name": "read-reports > readSingleReport > should throw error when file is not a valid CTRF report",
+        "duration": 0.16120800000004465,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readSingleReport > should throw error when file is not a valid CTRF report"
+      },
+      {
+        "name": "read-reports > readReportsFromDirectory > should read valid CTRF reports from directory",
+        "duration": 0.8867079999999987,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readReportsFromDirectory > should read valid CTRF reports from directory"
+      },
+      {
+        "name": "read-reports > readReportsFromDirectory > should throw error when directory does not exist",
+        "duration": 0.2164589999999862,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readReportsFromDirectory > should throw error when directory does not exist"
+      },
+      {
+        "name": "read-reports > readReportsFromDirectory > should throw error when no valid CTRF reports are found",
+        "duration": 0.2071669999999699,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readReportsFromDirectory > should throw error when no valid CTRF reports are found"
+      },
+      {
+        "name": "read-reports > readReportsFromDirectory > should skip invalid files and warn about them",
+        "duration": 0.4376249999999686,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readReportsFromDirectory > should skip invalid files and warn about them"
+      },
+      {
+        "name": "read-reports > readReportsFromGlobPattern > should read valid CTRF reports from glob pattern",
+        "duration": 0.44837499999999864,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readReportsFromGlobPattern > should read valid CTRF reports from glob pattern"
+      },
+      {
+        "name": "read-reports > readReportsFromGlobPattern > should throw error when no files match the pattern",
+        "duration": 0.15083299999997735,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readReportsFromGlobPattern > should throw error when no files match the pattern"
+      },
+      {
+        "name": "read-reports > readReportsFromGlobPattern > should throw error when no valid CTRF reports are found",
+        "duration": 0.17512499999998,
+        "status": "passed",
+        "rawStatus": "passed",
+        "type": "unit",
+        "filePath": "/Users/matthew/projects/personal/ctrf/ctrf-js-common/src/methods/read-reports.test.ts",
+        "retries": 0,
+        "flaky": false,
+        "suite": "read-reports > readReportsFromGlobPattern > should throw error when no valid CTRF reports are found"
       }
     ]
   }

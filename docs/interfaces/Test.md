@@ -26,6 +26,14 @@ Defined in: [types/ctrf.d.ts:68](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 ***
 
+### baseline?
+
+> `optional` **baseline**: `TestBaseline`
+
+Defined in: [types/ctrf.d.ts:75](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L75)
+
+***
+
 ### browser?
 
 > `optional` **browser**: `string`
@@ -54,7 +62,7 @@ Defined in: [types/ctrf.d.ts:49](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **extra**: `Record`\<`string`, `unknown`\>
 
-Defined in: [types/ctrf.d.ts:75](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L75)
+Defined in: [types/ctrf.d.ts:76](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L76)
 
 ***
 

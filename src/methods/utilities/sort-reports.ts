@@ -1,11 +1,11 @@
-import { Report } from "../../../types/ctrf";
+import { Report } from '../../../types/ctrf'
 
 /**
  * Sort order options for timestamp-based sorting.
  */
 export enum SortOrder {
-  ASC = "asc",
-  DESC = "desc",
+  ASC = 'asc',
+  DESC = 'desc',
 }
 
 /**
@@ -37,18 +37,18 @@ export enum SortOrder {
  */
 export function sortReportsByTimestamp(
   reports: Report[],
-  order: SortOrder = SortOrder.DESC,
+  order: SortOrder = SortOrder.DESC
 ): Report[] {
   return [...reports].sort((a, b) => {
-    const aTimestamp = a.timestamp || a.results?.summary?.stop;
-    const bTimestamp = b.timestamp || b.results?.summary?.stop;
+    const aTimestamp = a.timestamp || a.results?.summary?.stop
+    const bTimestamp = b.timestamp || b.results?.summary?.stop
 
-    if (!aTimestamp && !bTimestamp) return 0;
-    if (!aTimestamp) return 1;
-    if (!bTimestamp) return -1;
+    if (!aTimestamp && !bTimestamp) return 0
+    if (!aTimestamp) return 1
+    if (!bTimestamp) return -1
 
     const timeDiff =
-      new Date(bTimestamp).getTime() - new Date(aTimestamp).getTime();
-    return order === SortOrder.ASC ? -timeDiff : timeDiff;
-  });
+      new Date(bTimestamp).getTime() - new Date(aTimestamp).getTime()
+    return order === SortOrder.ASC ? -timeDiff : timeDiff
+  })
 }

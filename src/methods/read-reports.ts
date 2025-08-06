@@ -1,7 +1,7 @@
-import fs from "fs";
-import path from "path";
-import { Report } from "../../types/ctrf.js";
-import { glob } from "glob";
+import fs from 'fs'
+import path from 'path'
+import { Report } from '../../types/ctrf.js'
+import { glob } from 'glob'
 
 /**
  * Reads a single CTRF report file from a specified path.
@@ -12,29 +12,29 @@ import { glob } from "glob";
  */
 export function readReportFromFile(filePath: string): Report {
   if (!fs.existsSync(filePath)) {
-    throw new Error(`JSON file not found: ${filePath}`);
+    throw new Error(`JSON file not found: ${filePath}`)
   }
-  const resolvedPath = path.resolve(filePath);
+  const resolvedPath = path.resolve(filePath)
 
   if (!fs.existsSync(resolvedPath)) {
-    throw new Error(`The file '${resolvedPath}' does not exist.`);
+    throw new Error(`The file '${resolvedPath}' does not exist.`)
   }
 
   try {
-    const content = fs.readFileSync(resolvedPath, "utf8");
+    const content = fs.readFileSync(resolvedPath, 'utf8')
 
-    const parsed = JSON.parse(content);
+    const parsed = JSON.parse(content)
 
     if (!isCtrfReport(parsed)) {
-      throw new Error(`The file '${resolvedPath}' is not a valid CTRF report.`);
+      throw new Error(`The file '${resolvedPath}' is not a valid CTRF report.`)
     }
 
-    return parsed as Report;
+    return parsed as Report
   } catch (error) {
-    const errorMessage = (error as Error).message || "Unknown error";
+    const errorMessage = (error as Error).message || 'Unknown error'
     throw new Error(
-      `Failed to read or parse the file '${resolvedPath}': ${errorMessage}`,
-    );
+      `Failed to read or parse the file '${resolvedPath}': ${errorMessage}`
+    )
   }
 }
 
@@ -46,42 +46,42 @@ export function readReportFromFile(filePath: string): Report {
  * @throws If the directory does not exist or no valid CTRF reports are found.
  */
 export function readReportsFromDirectory(directoryPath: string): Report[] {
-  directoryPath = path.resolve(directoryPath);
+  directoryPath = path.resolve(directoryPath)
 
   if (!fs.existsSync(directoryPath)) {
-    throw new Error(`The directory '${directoryPath}' does not exist.`);
+    throw new Error(`The directory '${directoryPath}' does not exist.`)
   }
 
-  const files = fs.readdirSync(directoryPath);
+  const files = fs.readdirSync(directoryPath)
 
   const reports: Report[] = files
-    .filter((file) => path.extname(file) === ".json")
-    .map((file) => {
-      const filePath = path.join(directoryPath, file);
+    .filter(file => path.extname(file) === '.json')
+    .map(file => {
+      const filePath = path.join(directoryPath, file)
       try {
-        const content = fs.readFileSync(filePath, "utf8");
-        const parsed = JSON.parse(content);
+        const content = fs.readFileSync(filePath, 'utf8')
+        const parsed = JSON.parse(content)
 
         if (!isCtrfReport(parsed)) {
-          console.warn(`Skipping invalid CTRF report file: ${file}`);
-          return null;
+          console.warn(`Skipping invalid CTRF report file: ${file}`)
+          return null
         }
 
-        return parsed as Report;
+        return parsed as Report
       } catch (error) {
-        console.warn(`Failed to read or parse file '${file}':`, error);
-        return null;
+        console.warn(`Failed to read or parse file '${file}':`, error)
+        return null
       }
     })
-    .filter((report): report is Report => report !== null);
+    .filter((report): report is Report => report !== null)
 
   if (reports.length === 0) {
     throw new Error(
-      `No valid CTRF reports found in the directory '${directoryPath}'.`,
-    );
+      `No valid CTRF reports found in the directory '${directoryPath}'.`
+    )
   }
 
-  return reports;
+  return reports
 }
 
 /**
@@ -93,38 +93,38 @@ export function readReportsFromDirectory(directoryPath: string): Report[] {
  */
 
 export function readReportsFromGlobPattern(pattern: string): Report[] {
-  const files = glob.sync(pattern);
+  const files = glob.sync(pattern)
 
   if (files.length === 0) {
-    throw new Error(`No files found matching the pattern '${pattern}'.`);
+    throw new Error(`No files found matching the pattern '${pattern}'.`)
   }
 
   const reports: Report[] = files
-    .map((file) => {
+    .map(file => {
       try {
-        const content = fs.readFileSync(file, "utf8");
-        const parsed = JSON.parse(content);
+        const content = fs.readFileSync(file, 'utf8')
+        const parsed = JSON.parse(content)
 
         if (!isCtrfReport(parsed)) {
-          console.warn(`Skipping invalid CTRF report file: ${file}`);
-          return null;
+          console.warn(`Skipping invalid CTRF report file: ${file}`)
+          return null
         }
 
-        return parsed as Report;
+        return parsed as Report
       } catch (error) {
-        console.warn(`Failed to read or parse file '${file}':`, error);
-        return null;
+        console.warn(`Failed to read or parse file '${file}':`, error)
+        return null
       }
     })
-    .filter((report): report is Report => report !== null);
+    .filter((report): report is Report => report !== null)
 
   if (reports.length === 0) {
     throw new Error(
-      `No valid CTRF reports found matching the pattern '${pattern}'.`,
-    );
+      `No valid CTRF reports found matching the pattern '${pattern}'.`
+    )
   }
 
-  return reports;
+  return reports
 }
 
 /**
@@ -138,10 +138,10 @@ export function readReportsFromGlobPattern(pattern: string): Report[] {
 function isCtrfReport(obj: any): obj is Report {
   return (
     obj &&
-    typeof obj === "object" &&
+    typeof obj === 'object' &&
     obj.results &&
     Array.isArray(obj.results.tests) &&
-    typeof obj.results.summary === "object" &&
-    typeof obj.results.tool === "object"
-  );
+    typeof obj.results.summary === 'object' &&
+    typeof obj.results.tool === 'object'
+  )
 }
