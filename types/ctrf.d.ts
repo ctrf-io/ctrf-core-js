@@ -1,6 +1,6 @@
 export interface Report {
-  reportFormat: string
-  specVersion: string
+  reportFormat: "CTRF"
+  specVersion: `${number}.${number}.${number}`
   reportId?: string
   timestamp?: string
   generatedBy?: string
@@ -13,7 +13,6 @@ export interface Report {
 export interface Results {
   tool: Tool
   summary: Summary
-  metrics?: Metrics
   tests: Test[]
   environment?: Environment
   extra?: Record<string, unknown>
@@ -26,14 +25,11 @@ export interface Summary {
   skipped: number
   pending: number
   other: number
-  flaky?: number
+  flaky: number
   suites?: number
   start: number
   stop: number
-  extra?: Record<string, unknown>
-}
-
-export interface Metrics {
+  duration: number
   passRate?: number
   failRate?: number
   flakyRate?: number
@@ -88,7 +84,7 @@ export interface Environment {
   appVersion?: string
   buildId?: string
   buildName?: string
-  buildNumber?: string
+  buildNumber?: number
   buildUrl?: string
   repositoryName?: string
   repositoryUrl?: string
@@ -168,7 +164,7 @@ export interface Baseline {
   source?: string
   timestamp?: string
   buildName?: string
-  buildNumber?: string
+  buildNumber?: number
   buildUrl?: string
   extra?: Record<string, unknown>
 }
