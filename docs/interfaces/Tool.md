@@ -6,7 +6,7 @@
 
 # Interface: Tool
 
-Defined in: [types/ctrf.d.ts:104](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L104)
+Defined in: [types/ctrf.d.ts:100](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L100)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/ctrf.d.ts:104](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **extra**: `Record`\<`string`, `unknown`\>
 
-Defined in: [types/ctrf.d.ts:107](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L107)
+Defined in: [types/ctrf.d.ts:103](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L103)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/ctrf.d.ts:107](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > **name**: `string`
 
-Defined in: [types/ctrf.d.ts:105](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L105)
+Defined in: [types/ctrf.d.ts:101](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L101)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [types/ctrf.d.ts:105](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **version**: `string`
 
-Defined in: [types/ctrf.d.ts:106](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L106)
+Defined in: [types/ctrf.d.ts:102](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L102)

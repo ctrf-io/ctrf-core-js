@@ -14,7 +14,7 @@ Defined in: [types/ctrf.d.ts:13](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **environment**: [`Environment`](Environment.md)
 
-Defined in: [types/ctrf.d.ts:18](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L18)
+Defined in: [types/ctrf.d.ts:17](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L17)
 
 ***
 
@@ -22,15 +22,7 @@ Defined in: [types/ctrf.d.ts:18](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **extra**: `Record`\<`string`, `unknown`\>
 
-Defined in: [types/ctrf.d.ts:19](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L19)
-
-***
-
-### metrics?
-
-> `optional` **metrics**: `Metrics`
-
-Defined in: [types/ctrf.d.ts:16](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L16)
+Defined in: [types/ctrf.d.ts:18](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L18)
 
 ***
 
@@ -46,7 +38,7 @@ Defined in: [types/ctrf.d.ts:15](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > **tests**: [`Test`](Test.md)[]
 
-Defined in: [types/ctrf.d.ts:17](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L17)
+Defined in: [types/ctrf.d.ts:16](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L16)
 
 ***
 

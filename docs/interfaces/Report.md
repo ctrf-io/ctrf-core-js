@@ -44,7 +44,7 @@ Defined in: [types/ctrf.d.ts:8](https://github.com/ctrf-io/ctrf-core-js/blob/mai
 
 ### reportFormat
 
-> **reportFormat**: `string`
+> **reportFormat**: `"CTRF"`
 
 Defined in: [types/ctrf.d.ts:2](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L2)
 
@@ -68,7 +68,7 @@ Defined in: [types/ctrf.d.ts:7](https://github.com/ctrf-io/ctrf-core-js/blob/mai
 
 ### specVersion
 
-> **specVersion**: `string`
+> **specVersion**: `` `${number}.${number}.${number}` ``
 
 Defined in: [types/ctrf.d.ts:3](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L3)
 

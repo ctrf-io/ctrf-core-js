@@ -22,7 +22,7 @@ describe('read-reports', () => {
 
   describe('readSingleReport', () => {
     const validCtrfReport: Report = {
-      reportFormat: 'ctrf',
+      reportFormat: 'CTRF',
       specVersion: '1.0.0',
       results: {
         tool: { name: 'jest' },
@@ -33,8 +33,10 @@ describe('read-reports', () => {
           skipped: 0,
           pending: 0,
           other: 0,
+          flaky: 0,
           start: Date.now(),
           stop: Date.now() + 1000,
+          duration: 1000,
         },
         tests: [
           {
@@ -94,7 +96,7 @@ describe('read-reports', () => {
     it('should read valid CTRF reports from directory', () => {
       const directoryPath = '/path/to/reports'
       const validCtrfReport: Report = {
-        reportFormat: 'ctrf',
+        reportFormat: 'CTRF',
         specVersion: '1.0.0',
         results: {
           tool: { name: 'jest' },
@@ -105,8 +107,10 @@ describe('read-reports', () => {
             skipped: 0,
             pending: 0,
             other: 0,
+            flaky: 0,
             start: Date.now(),
             stop: Date.now() + 1000,
+            duration: 1000,
           },
           tests: [
             {
@@ -155,7 +159,7 @@ describe('read-reports', () => {
     it('should skip invalid files and warn about them', () => {
       const directoryPath = '/path/to/mixed'
       const validCtrfReport: Report = {
-        reportFormat: 'ctrf',
+        reportFormat: 'CTRF',
         specVersion: '1.0.0',
         results: {
           tool: { name: 'jest' },
@@ -166,8 +170,10 @@ describe('read-reports', () => {
             skipped: 0,
             pending: 0,
             other: 0,
+            flaky: 0,
             start: Date.now(),
             stop: Date.now() + 1000,
+            duration: 1000,
           },
           tests: [
             {
@@ -203,7 +209,7 @@ describe('read-reports', () => {
     it('should read valid CTRF reports from glob pattern', () => {
       const pattern = 'reports/*.json'
       const validCtrfReport: Report = {
-        reportFormat: 'ctrf',
+        reportFormat: 'CTRF',
         specVersion: '1.0.0',
         results: {
           tool: { name: 'jest' },
@@ -214,8 +220,10 @@ describe('read-reports', () => {
             skipped: 0,
             pending: 0,
             other: 0,
+            flaky: 0,
             start: Date.now(),
             stop: Date.now() + 1000,
+            duration: 1000,
           },
           tests: [
             {

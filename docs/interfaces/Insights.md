@@ -6,7 +6,7 @@
 
 # Interface: Insights
 
-Defined in: [types/ctrf.d.ts:139](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L139)
+Defined in: [types/ctrf.d.ts:135](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L135)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/ctrf.d.ts:139](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **averageRunDuration**: [`InsightsMetric`](InsightsMetric.md)
 
-Defined in: [types/ctrf.d.ts:144](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L144)
+Defined in: [types/ctrf.d.ts:140](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L140)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/ctrf.d.ts:144](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **averageTestDuration**: [`InsightsMetric`](InsightsMetric.md)
 
-Defined in: [types/ctrf.d.ts:146](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L146)
+Defined in: [types/ctrf.d.ts:142](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L142)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [types/ctrf.d.ts:146](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **extra**: `Record`\<`string`, `unknown`\>
 
-Defined in: [types/ctrf.d.ts:147](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L147)
+Defined in: [types/ctrf.d.ts:143](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L143)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [types/ctrf.d.ts:147](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **failRate**: [`InsightsMetric`](InsightsMetric.md)
 
-Defined in: [types/ctrf.d.ts:142](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L142)
+Defined in: [types/ctrf.d.ts:138](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L138)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [types/ctrf.d.ts:142](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **flakyRate**: [`InsightsMetric`](InsightsMetric.md)
 
-Defined in: [types/ctrf.d.ts:143](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L143)
+Defined in: [types/ctrf.d.ts:139](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L139)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: [types/ctrf.d.ts:143](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **p95RunDuration**: [`InsightsMetric`](InsightsMetric.md)
 
-Defined in: [types/ctrf.d.ts:145](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L145)
+Defined in: [types/ctrf.d.ts:141](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L141)
 
 ***
 
@@ -62,7 +62,7 @@ Defined in: [types/ctrf.d.ts:145](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **passRate**: [`InsightsMetric`](InsightsMetric.md)
 
-Defined in: [types/ctrf.d.ts:141](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L141)
+Defined in: [types/ctrf.d.ts:137](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L137)
 
 ***
 
@@ -70,4 +70,4 @@ Defined in: [types/ctrf.d.ts:141](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **runsAnalyzed**: `number`
 
-Defined in: [types/ctrf.d.ts:140](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L140)
+Defined in: [types/ctrf.d.ts:136](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L136)

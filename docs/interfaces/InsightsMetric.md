@@ -6,7 +6,7 @@
 
 # Interface: InsightsMetric
 
-Defined in: [types/ctrf.d.ts:160](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L160)
+Defined in: [types/ctrf.d.ts:156](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L156)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/ctrf.d.ts:160](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > **baseline**: `number`
 
-Defined in: [types/ctrf.d.ts:162](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L162)
+Defined in: [types/ctrf.d.ts:158](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L158)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/ctrf.d.ts:162](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > **change**: `number`
 
-Defined in: [types/ctrf.d.ts:163](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L163)
+Defined in: [types/ctrf.d.ts:159](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L159)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [types/ctrf.d.ts:163](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > **current**: `number`
 
-Defined in: [types/ctrf.d.ts:161](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L161)
+Defined in: [types/ctrf.d.ts:157](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L157)

@@ -6,7 +6,7 @@
 
 # Interface: Test
 
-Defined in: [types/ctrf.d.ts:45](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L45)
+Defined in: [types/ctrf.d.ts:41](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L41)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/ctrf.d.ts:45](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **ai**: `string`
 
-Defined in: [types/ctrf.d.ts:57](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L57)
+Defined in: [types/ctrf.d.ts:53](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L53)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/ctrf.d.ts:57](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **attachments**: [`Attachment`](Attachment.md)[]
 
-Defined in: [types/ctrf.d.ts:68](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L68)
+Defined in: [types/ctrf.d.ts:64](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L64)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [types/ctrf.d.ts:68](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **baseline**: `TestBaseline`
 
-Defined in: [types/ctrf.d.ts:75](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L75)
+Defined in: [types/ctrf.d.ts:71](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L71)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [types/ctrf.d.ts:75](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **browser**: `string`
 
-Defined in: [types/ctrf.d.ts:69](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L69)
+Defined in: [types/ctrf.d.ts:65](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L65)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [types/ctrf.d.ts:69](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **device**: `string`
 
-Defined in: [types/ctrf.d.ts:70](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L70)
+Defined in: [types/ctrf.d.ts:66](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L66)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: [types/ctrf.d.ts:70](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > **duration**: `number`
 
-Defined in: [types/ctrf.d.ts:49](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L49)
+Defined in: [types/ctrf.d.ts:45](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L45)
 
 ***
 
@@ -62,7 +62,7 @@ Defined in: [types/ctrf.d.ts:49](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **extra**: `Record`\<`string`, `unknown`\>
 
-Defined in: [types/ctrf.d.ts:76](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L76)
+Defined in: [types/ctrf.d.ts:72](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L72)
 
 ***
 
@@ -70,7 +70,7 @@ Defined in: [types/ctrf.d.ts:76](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **filePath**: `string`
 
-Defined in: [types/ctrf.d.ts:61](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L61)
+Defined in: [types/ctrf.d.ts:57](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L57)
 
 ***
 
@@ -78,7 +78,7 @@ Defined in: [types/ctrf.d.ts:61](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **flaky**: `boolean`
 
-Defined in: [types/ctrf.d.ts:64](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L64)
+Defined in: [types/ctrf.d.ts:60](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L60)
 
 ***
 
@@ -86,7 +86,7 @@ Defined in: [types/ctrf.d.ts:64](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **id**: `string`
 
-Defined in: [types/ctrf.d.ts:46](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L46)
+Defined in: [types/ctrf.d.ts:42](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L42)
 
 ***
 
@@ -94,7 +94,7 @@ Defined in: [types/ctrf.d.ts:46](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **insights**: [`TestInsights`](TestInsights.md)
 
-Defined in: [types/ctrf.d.ts:74](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L74)
+Defined in: [types/ctrf.d.ts:70](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L70)
 
 ***
 
@@ -102,7 +102,7 @@ Defined in: [types/ctrf.d.ts:74](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **line**: `number`
 
-Defined in: [types/ctrf.d.ts:56](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L56)
+Defined in: [types/ctrf.d.ts:52](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L52)
 
 ***
 
@@ -110,7 +110,7 @@ Defined in: [types/ctrf.d.ts:56](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **message**: `string`
 
-Defined in: [types/ctrf.d.ts:53](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L53)
+Defined in: [types/ctrf.d.ts:49](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L49)
 
 ***
 
@@ -118,7 +118,7 @@ Defined in: [types/ctrf.d.ts:53](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > **name**: `string`
 
-Defined in: [types/ctrf.d.ts:47](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L47)
+Defined in: [types/ctrf.d.ts:43](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L43)
 
 ***
 
@@ -126,7 +126,7 @@ Defined in: [types/ctrf.d.ts:47](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **parameters**: `Record`\<`string`, `unknown`\>
 
-Defined in: [types/ctrf.d.ts:72](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L72)
+Defined in: [types/ctrf.d.ts:68](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L68)
 
 ***
 
@@ -134,7 +134,7 @@ Defined in: [types/ctrf.d.ts:72](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **rawStatus**: `string`
 
-Defined in: [types/ctrf.d.ts:58](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L58)
+Defined in: [types/ctrf.d.ts:54](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L54)
 
 ***
 
@@ -142,7 +142,7 @@ Defined in: [types/ctrf.d.ts:58](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **retries**: `number`
 
-Defined in: [types/ctrf.d.ts:62](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L62)
+Defined in: [types/ctrf.d.ts:58](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L58)
 
 ***
 
@@ -150,7 +150,7 @@ Defined in: [types/ctrf.d.ts:62](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **retryAttempts**: [`RetryAttempt`](RetryAttempt.md)[]
 
-Defined in: [types/ctrf.d.ts:63](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L63)
+Defined in: [types/ctrf.d.ts:59](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L59)
 
 ***
 
@@ -158,7 +158,7 @@ Defined in: [types/ctrf.d.ts:63](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **screenshot**: `string`
 
-Defined in: [types/ctrf.d.ts:71](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L71)
+Defined in: [types/ctrf.d.ts:67](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L67)
 
 ***
 
@@ -166,7 +166,7 @@ Defined in: [types/ctrf.d.ts:71](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **snippet**: `string`
 
-Defined in: [types/ctrf.d.ts:55](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L55)
+Defined in: [types/ctrf.d.ts:51](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L51)
 
 ***
 
@@ -174,7 +174,7 @@ Defined in: [types/ctrf.d.ts:55](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **start**: `number`
 
-Defined in: [types/ctrf.d.ts:50](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L50)
+Defined in: [types/ctrf.d.ts:46](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L46)
 
 ***
 
@@ -182,7 +182,7 @@ Defined in: [types/ctrf.d.ts:50](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > **status**: [`TestStatus`](../type-aliases/TestStatus.md)
 
-Defined in: [types/ctrf.d.ts:48](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L48)
+Defined in: [types/ctrf.d.ts:44](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L44)
 
 ***
 
@@ -190,7 +190,7 @@ Defined in: [types/ctrf.d.ts:48](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **stderr**: `string`[]
 
-Defined in: [types/ctrf.d.ts:66](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L66)
+Defined in: [types/ctrf.d.ts:62](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L62)
 
 ***
 
@@ -198,7 +198,7 @@ Defined in: [types/ctrf.d.ts:66](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **stdout**: `string`[]
 
-Defined in: [types/ctrf.d.ts:65](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L65)
+Defined in: [types/ctrf.d.ts:61](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L61)
 
 ***
 
@@ -206,7 +206,7 @@ Defined in: [types/ctrf.d.ts:65](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **steps**: [`Step`](Step.md)[]
 
-Defined in: [types/ctrf.d.ts:73](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L73)
+Defined in: [types/ctrf.d.ts:69](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L69)
 
 ***
 
@@ -214,7 +214,7 @@ Defined in: [types/ctrf.d.ts:73](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **stop**: `number`
 
-Defined in: [types/ctrf.d.ts:51](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L51)
+Defined in: [types/ctrf.d.ts:47](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L47)
 
 ***
 
@@ -222,7 +222,7 @@ Defined in: [types/ctrf.d.ts:51](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **suite**: `string`
 
-Defined in: [types/ctrf.d.ts:52](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L52)
+Defined in: [types/ctrf.d.ts:48](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L48)
 
 ***
 
@@ -230,7 +230,7 @@ Defined in: [types/ctrf.d.ts:52](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **tags**: `string`[]
 
-Defined in: [types/ctrf.d.ts:59](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L59)
+Defined in: [types/ctrf.d.ts:55](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L55)
 
 ***
 
@@ -238,7 +238,7 @@ Defined in: [types/ctrf.d.ts:59](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **threadId**: `string`
 
-Defined in: [types/ctrf.d.ts:67](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L67)
+Defined in: [types/ctrf.d.ts:63](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L63)
 
 ***
 
@@ -246,7 +246,7 @@ Defined in: [types/ctrf.d.ts:67](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **trace**: `string`
 
-Defined in: [types/ctrf.d.ts:54](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L54)
+Defined in: [types/ctrf.d.ts:50](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L50)
 
 ***
 
@@ -254,4 +254,4 @@ Defined in: [types/ctrf.d.ts:54](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **type**: `string`
 
-Defined in: [types/ctrf.d.ts:60](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L60)
+Defined in: [types/ctrf.d.ts:56](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L56)

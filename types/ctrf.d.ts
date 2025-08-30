@@ -1,5 +1,5 @@
 export interface Report {
-  reportFormat: "CTRF"
+  reportFormat: 'CTRF'
   specVersion: `${number}.${number}.${number}`
   reportId?: string
   timestamp?: string

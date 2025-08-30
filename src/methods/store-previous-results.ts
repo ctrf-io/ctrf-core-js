@@ -10,7 +10,7 @@ interface PreviousResult {
   stop: number
   buildId?: string
   buildName?: string
-  buildNumber?: string
+  buildNumber?: number
   buildUrl?: string
   result: string
   tests: number

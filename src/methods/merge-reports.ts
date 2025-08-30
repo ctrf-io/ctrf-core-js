@@ -79,6 +79,8 @@ function initializeEmptySummary(): Summary {
     skipped: 0,
     pending: 0,
     other: 0,
+    flaky: 0,
+    duration: 0,
     start: Number.MAX_SAFE_INTEGER,
     stop: 0,
   }

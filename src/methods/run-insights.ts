@@ -533,15 +533,12 @@ function calculateTestInsightsWithBaseline(
     averageTestDuration: {
       current: currentAverageDuration,
       baseline: baselineAverageDuration,
-      change: calculatePercentChange(
-        currentAverageDuration,
-        baselineAverageDuration
-      ),
+      change: currentAverageDuration - baselineAverageDuration,
     },
     p95TestDuration: {
       current: currentP95Duration,
       baseline: baselineP95Duration,
-      change: calculatePercentChange(currentP95Duration, baselineP95Duration),
+      change: currentP95Duration - baselineP95Duration,
     },
     executedInRuns: currentTestMetrics.appearsInRuns,
     extra: relevantMetrics,
@@ -666,26 +663,23 @@ function calculateReportInsightsBaseline(
     averageTestDuration: {
       current: currentInsights?.averageTestDuration?.current ?? 0,
       baseline: previousInsights?.averageTestDuration?.current ?? 0,
-      change: calculatePercentChange(
-        currentInsights?.averageTestDuration?.current ?? 0,
-        previousInsights?.averageTestDuration?.current ?? 0
-      ),
+      change:
+        (currentInsights?.averageTestDuration?.current ?? 0) -
+        (previousInsights?.averageTestDuration?.current ?? 0),
     },
     averageRunDuration: {
       current: currentInsights?.averageRunDuration?.current ?? 0,
       baseline: previousInsights?.averageRunDuration?.current ?? 0,
-      change: calculatePercentChange(
-        currentInsights?.averageRunDuration?.current ?? 0,
-        previousInsights?.averageRunDuration?.current ?? 0
-      ),
+      change:
+        (currentInsights?.averageRunDuration?.current ?? 0) -
+        (previousInsights?.averageRunDuration?.current ?? 0),
     },
     p95RunDuration: {
       current: currentInsights?.p95RunDuration?.current ?? 0,
       baseline: previousInsights?.p95RunDuration?.current ?? 0,
-      change: calculatePercentChange(
-        currentInsights?.p95RunDuration?.current ?? 0,
-        previousInsights?.p95RunDuration?.current ?? 0
-      ),
+      change:
+        (currentInsights?.p95RunDuration?.current ?? 0) -
+        (previousInsights?.p95RunDuration?.current ?? 0),
     },
     runsAnalyzed: currentInsights?.runsAnalyzed ?? 0,
     extra: currentInsights.extra,
