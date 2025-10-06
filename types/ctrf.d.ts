@@ -25,11 +25,11 @@ export interface Summary {
   skipped: number
   pending: number
   other: number
-  flaky: number
+  flaky?: number
   suites?: number
   start: number
   stop: number
-  duration: number
+  duration?: number
   extra?: Record<string, unknown>
 }
 
@@ -151,6 +151,7 @@ export interface Baseline {
   reportId: string
   source?: string
   timestamp?: string
+  commit?: string
   buildName?: string
   buildNumber?: number
   buildUrl?: string
