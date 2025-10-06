@@ -19,8 +19,11 @@ Common JavaScript library for working with CTRF reports, including type definiti
 </div>
 
 <p style="font-size: 14px; margin: 1rem 0;">
+
 Contributions are very welcome! <br/>
-Explore more <a href="https://www.ctrf.io/integrations">integrations</a>
+Explore more <a href="https://www.ctrf.io/integrations">integrations</a> <br/>
+We’d love your feedback, <a href="https://app.formbricks.com/s/cmefs524mhlh1tl01gkpvefrb">share it anonymously</a>.
+
 </p>
 </div>
 
