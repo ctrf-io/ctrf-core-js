@@ -10,14 +10,6 @@ Defined in: [types/ctrf.d.ts:21](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 ## Properties
 
-### averageTestDuration?
-
-> `optional` **averageTestDuration**: `number`
-
-Defined in: [types/ctrf.d.ts:36](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L36)
-
-***
-
 ### duration
 
 > **duration**: `number`
@@ -30,7 +22,7 @@ Defined in: [types/ctrf.d.ts:32](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 > `optional` **extra**: `Record`\<`string`, `unknown`\>
 
-Defined in: [types/ctrf.d.ts:38](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L38)
+Defined in: [types/ctrf.d.ts:33](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L33)
 
 ***
 
@@ -42,27 +34,11 @@ Defined in: [types/ctrf.d.ts:24](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 ***
 
-### failRate?
-
-> `optional` **failRate**: `number`
-
-Defined in: [types/ctrf.d.ts:34](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L34)
-
-***
-
 ### flaky
 
 > **flaky**: `number`
 
 Defined in: [types/ctrf.d.ts:28](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L28)
-
-***
-
-### flakyRate?
-
-> `optional` **flakyRate**: `number`
-
-Defined in: [types/ctrf.d.ts:35](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L35)
 
 ***
 
@@ -74,27 +50,11 @@ Defined in: [types/ctrf.d.ts:27](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 ***
 
-### p95TestDuration?
-
-> `optional` **p95TestDuration**: `number`
-
-Defined in: [types/ctrf.d.ts:37](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L37)
-
-***
-
 ### passed
 
 > **passed**: `number`
 
 Defined in: [types/ctrf.d.ts:23](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L23)
-
-***
-
-### passRate?
-
-> `optional` **passRate**: `number`
-
-Defined in: [types/ctrf.d.ts:33](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L33)
 
 ***
 

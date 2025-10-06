@@ -6,7 +6,7 @@
 
 # Interface: Attachment
 
-Defined in: [types/ctrf.d.ts:112](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L112)
+Defined in: [types/ctrf.d.ts:100](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L100)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/ctrf.d.ts:112](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > **contentType**: `string`
 
-Defined in: [types/ctrf.d.ts:114](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L114)
+Defined in: [types/ctrf.d.ts:102](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L102)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/ctrf.d.ts:114](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > `optional` **extra**: `Record`\<`string`, `unknown`\>
 
-Defined in: [types/ctrf.d.ts:116](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L116)
+Defined in: [types/ctrf.d.ts:104](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L104)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [types/ctrf.d.ts:116](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > **name**: `string`
 
-Defined in: [types/ctrf.d.ts:113](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L113)
+Defined in: [types/ctrf.d.ts:101](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L101)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [types/ctrf.d.ts:113](https://github.com/ctrf-io/ctrf-core-js/blob/m
 
 > **path**: `string`
 
-Defined in: [types/ctrf.d.ts:115](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L115)
+Defined in: [types/ctrf.d.ts:103](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L103)

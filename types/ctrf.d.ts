@@ -30,11 +30,6 @@ export interface Summary {
   start: number
   stop: number
   duration: number
-  passRate?: number
-  failRate?: number
-  flakyRate?: number
-  averageTestDuration?: number
-  p95TestDuration?: number
   extra?: Record<string, unknown>
 }
 
@@ -68,13 +63,6 @@ export interface Test {
   parameters?: Record<string, unknown>
   steps?: Step[]
   insights?: TestInsights
-  baseline?: TestBaseline
-  extra?: Record<string, unknown>
-}
-
-export interface TestBaseline {
-  status: TestStatus
-  duration: number
   extra?: Record<string, unknown>
 }
 
