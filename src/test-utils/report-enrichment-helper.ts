@@ -54,6 +54,8 @@ export class ReportEnrichmentTestHelper {
           other: tests.filter(
             t => !['passed', 'failed', 'skipped', 'pending'].includes(t.status)
           ).length,
+          flaky: tests.filter(t => t.flaky === true).length,
+          duration: tests.reduce((sum, t) => sum + t.duration, 0),
           start: startTime,
           stop: startTime + 5000,
         },

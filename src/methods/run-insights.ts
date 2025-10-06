@@ -859,6 +859,14 @@ export function enrichReportWithInsights(
     baseline
   )
 
+  // Remove testsAdded and testsRemoved as they're not part of the official schema yet
+  if (baselineInsights.extra?.testsAdded) {
+    delete baselineInsights.extra.testsAdded
+  }
+  if (baselineInsights.extra?.testsRemoved) {
+    delete baselineInsights.extra.testsRemoved
+  }
+
   return {
     ...currentReportWithTestInsights,
     insights: baselineInsights,
