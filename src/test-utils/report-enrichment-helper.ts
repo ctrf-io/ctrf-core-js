@@ -1,9 +1,12 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import * as os from 'os'
-import { enrichReportsWithInsights, EnrichmentConfig } from '../../../scripts/enrich-reports'
-import { Report, Test } from '../../../types/ctrf.js'
-import { CTRF_REPORT_FORMAT, CTRF_SPEC_VERSION } from '../../constants'
+import {
+  enrichReportsWithInsights,
+  EnrichmentConfig,
+} from '../../scripts/enrich-reports'
+import { Report, Test } from '../../types/ctrf.js'
+import { CTRF_REPORT_FORMAT, CTRF_SPEC_VERSION } from '../constants'
 
 /**
  * Test helper for creating and testing report enrichment scenarios
@@ -25,7 +28,7 @@ export class ReportEnrichmentTestHelper {
       name: 'test-name',
       status: 'passed',
       duration: 100,
-      ...overrides
+      ...overrides,
     }
   }
 
@@ -48,12 +51,16 @@ export class ReportEnrichmentTestHelper {
           failed: tests.filter(t => t.status === 'failed').length,
           skipped: tests.filter(t => t.status === 'skipped').length,
           pending: tests.filter(t => t.status === 'pending').length,
-          other: tests.filter(t => !['passed', 'failed', 'skipped', 'pending'].includes(t.status)).length,
+          other: tests.filter(
+            t => !['passed', 'failed', 'skipped', 'pending'].includes(t.status)
+          ).length,
+          flaky: tests.filter(t => t.flaky === true).length,
+          duration: tests.reduce((sum, t) => sum + t.duration, 0),
           start: startTime,
-          stop: startTime + 5000
+          stop: startTime + 5000,
         },
-        tests
-      }
+        tests,
+      },
     }
   }
 
@@ -61,7 +68,10 @@ export class ReportEnrichmentTestHelper {
    * Add a report to the test scenario
    */
   addReport(report: Report, filename?: string): string {
-    const reportPath = path.join(this.tempDir, filename || `report-${this.reportPaths.length + 1}.json`)
+    const reportPath = path.join(
+      this.tempDir,
+      filename || `report-${this.reportPaths.length + 1}.json`
+    )
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2))
     this.reportPaths.push(reportPath)
     return reportPath
@@ -70,14 +80,17 @@ export class ReportEnrichmentTestHelper {
   /**
    * Add multiple reports with timestamps spaced apart
    */
-  addReportsWithTimestamps(reportsData: Array<{ tests: Test[], toolName?: string }>, intervalMs: number = 10000): string[] {
+  addReportsWithTimestamps(
+    reportsData: Array<{ tests: Test[]; toolName?: string }>,
+    intervalMs: number = 10000
+  ): string[] {
     const baseTime = Date.now()
     const paths: string[] = []
 
     reportsData.forEach((reportData, index) => {
       const report = this.createMockReport(
         reportData.tests,
-        baseTime - (index * intervalMs), // Earlier reports have smaller timestamps
+        baseTime - index * intervalMs, // Earlier reports have smaller timestamps
         reportData.toolName
       )
       const path = this.addReport(report, `report-${index + 1}.json`)
@@ -96,33 +109,73 @@ export class ReportEnrichmentTestHelper {
     reportPaths: string[]
   } {
     const currentTests = [
-      this.createMockTest({ name: 'stable-test', status: 'passed', duration: 100 }),
-      this.createMockTest({ name: 'flaky-test', status: 'passed', retries: 2, flaky: true, duration: 150 }),
-      this.createMockTest({ name: 'failing-test', status: 'failed', duration: 200 })
+      this.createMockTest({
+        name: 'stable-test',
+        status: 'passed',
+        duration: 100,
+      }),
+      this.createMockTest({
+        name: 'flaky-test',
+        status: 'passed',
+        retries: 2,
+        flaky: true,
+        duration: 150,
+      }),
+      this.createMockTest({
+        name: 'failing-test',
+        status: 'failed',
+        duration: 200,
+      }),
     ]
 
     const previousTests1 = [
-      this.createMockTest({ name: 'stable-test', status: 'passed', duration: 95 }),
-      this.createMockTest({ name: 'flaky-test', status: 'failed', duration: 180 }),
-      this.createMockTest({ name: 'failing-test', status: 'passed', duration: 190 })
+      this.createMockTest({
+        name: 'stable-test',
+        status: 'passed',
+        duration: 95,
+      }),
+      this.createMockTest({
+        name: 'flaky-test',
+        status: 'failed',
+        duration: 180,
+      }),
+      this.createMockTest({
+        name: 'failing-test',
+        status: 'passed',
+        duration: 190,
+      }),
     ]
 
     const previousTests2 = [
-      this.createMockTest({ name: 'stable-test', status: 'passed', duration: 105 }),
-      this.createMockTest({ name: 'flaky-test', status: 'passed', retries: 1, flaky: true, duration: 160 }),
-      this.createMockTest({ name: 'failing-test', status: 'failed', duration: 210 })
+      this.createMockTest({
+        name: 'stable-test',
+        status: 'passed',
+        duration: 105,
+      }),
+      this.createMockTest({
+        name: 'flaky-test',
+        status: 'passed',
+        retries: 1,
+        flaky: true,
+        duration: 160,
+      }),
+      this.createMockTest({
+        name: 'failing-test',
+        status: 'failed',
+        duration: 210,
+      }),
     ]
 
     const reportPaths = this.addReportsWithTimestamps([
       { tests: currentTests },
       { tests: previousTests1 },
-      { tests: previousTests2 }
+      { tests: previousTests2 },
     ])
 
     const currentReport = this.createMockReport(currentTests)
     const previousReports = [
       this.createMockReport(previousTests1, Date.now() - 10000),
-      this.createMockReport(previousTests2, Date.now() - 20000)
+      this.createMockReport(previousTests2, Date.now() - 20000),
     ]
 
     return { currentReport, previousReports, reportPaths }
@@ -131,11 +184,14 @@ export class ReportEnrichmentTestHelper {
   /**
    * Run enrichment on the collected reports
    */
-  async enrichReports(outputFilename: string = 'enriched-report.json', verbose: boolean = false): Promise<Report> {
+  async enrichReports(
+    outputFilename: string = 'enriched-report.json',
+    verbose: boolean = false
+  ): Promise<Report> {
     const config: EnrichmentConfig = {
       inputReports: this.reportPaths,
       outputPath: path.join(this.tempDir, outputFilename),
-      verbose
+      verbose,
     }
 
     return await enrichReportsWithInsights(config)
@@ -187,7 +243,7 @@ export async function testReportEnrichment(
   outputPath?: string
 ): Promise<Report> {
   const helper = new ReportEnrichmentTestHelper()
-  
+
   try {
     // Add all reports
     reports.forEach((report, index) => {
@@ -196,9 +252,9 @@ export async function testReportEnrichment(
 
     // Run enrichment
     const result = await helper.enrichReports(outputPath, false)
-    
+
     return result
   } finally {
     helper.cleanup()
   }
-} 
+}

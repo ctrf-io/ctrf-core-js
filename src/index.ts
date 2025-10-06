@@ -1,10 +1,13 @@
-export { mergeReports } from './methods/merge-reports.js';
-export { readReportsFromDirectory } from './methods/read-reports.js';
-export { readReportsFromGlobPattern } from './methods/read-reports.js';
-export { 
-  enrichReportWithInsights,
-} from './methods/run-insights.js';
-export { storePreviousResults } from './methods/store-previous-results.js';
+export { mergeReports } from './methods/merge-reports.js'
+export { readReportsFromDirectory } from './methods/read-reports.js'
+export { readReportsFromGlobPattern } from './methods/read-reports.js'
+export { enrichReportWithInsights } from './methods/run-insights.js'
+export {
+  sortReportsByTimestamp,
+  SortOrder,
+} from './methods/utilities/sort-reports.js'
+export { storePreviousResults } from './methods/store-previous-results.js'
+export { readReportFromFile } from './methods/read-reports.js'
 
 export type {
   Report,
@@ -15,10 +18,9 @@ export type {
   Tool,
   Step,
   Attachment,
-  RetryAttempts,
+  RetryAttempt,
   Insights,
   TestInsights,
   InsightsMetric,
-  TestState
-} from '../types/ctrf.js';
-
+  TestStatus,
+} from '../types/ctrf.js'

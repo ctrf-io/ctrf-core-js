@@ -3,5 +3,5 @@ final
 scripts
 coverage
 dist
-docs
 node_modules
+ctrf

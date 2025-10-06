@@ -1,14 +1,17 @@
-import { InsightsMetric,  Report, Test, TestInsights, Insights } from "../../types/ctrf.js"
+import {
+  InsightsMetric,
+  Report,
+  Test,
+  TestInsights,
+  Insights,
+} from '../../types/ctrf.js'
+import { sortReportsByTimestamp } from './utilities/sort-reports.js'
 
 export interface SimplifiedTestData {
   name: string
   suite?: string
   filePath?: string
 }
-
-// ========================================
-// UTILITY FUNCTIONS
-// ========================================
 
 /**
  * Utility function that determines if a test is flaky based on its retries and status.
@@ -31,7 +34,10 @@ export function isTestFlaky(test: Test): boolean {
  * @param decimals - Number of decimal places (default: 2)
  * @returns Formatted percentage string (e.g., "25.50%")
  */
-export function formatAsPercentage(ratio: number, decimals: number = 2): string {
+export function formatAsPercentage(
+  ratio: number,
+  decimals: number = 2
+): string {
   return `${(ratio * 100).toFixed(decimals)}%`
 }
 
@@ -45,12 +51,32 @@ export function formatAsPercentage(ratio: number, decimals: number = 2): string 
 export function formatInsightsMetricAsPercentage(
   metric: InsightsMetric,
   decimals: number = 2
-): { current: string; previous: string; change: string } {
+): { current: string; baseline: string; change: string } {
   return {
     current: formatAsPercentage(metric.current, decimals),
-    previous: formatAsPercentage(metric.previous, decimals),
-    change: `${metric.change >= 0 ? '+' : ''}${formatAsPercentage(metric.change, decimals)}`
+    baseline: formatAsPercentage(metric.baseline, decimals),
+    change: `${metric.change >= 0 ? '+' : ''}${formatAsPercentage(metric.change, decimals)}`,
   }
+}
+
+/**
+ * Utility function that calculates percent fractional change between current and baseline values.
+ * Used for duration metrics where the change should be expressed as a ratio (e.g., 0.25 = 25% increase).
+ *
+ * @param current - The current value
+ * @param baseline - The baseline value to compare against
+ * @param decimals - Number of decimal places (default: 4)
+ * @returns Percent fractional change, or 0 if baseline is 0
+ */
+export function calculatePercentChange(
+  current: number,
+  baseline: number,
+  decimals: number = 4
+): number {
+  if (baseline === 0) {
+    return 0
+  }
+  return Number(((current - baseline) / baseline).toFixed(decimals))
 }
 
 /**
@@ -61,10 +87,10 @@ export function formatInsightsMetricAsPercentage(
  */
 function calculateP95(values: number[]): number {
   if (values.length === 0) return 0
-  
+
   const sorted = [...values].sort((a, b) => a - b)
   const index = Math.ceil(sorted.length * 0.95) - 1
-  
+
   return Number(sorted[Math.max(0, index)].toFixed(2))
 }
 
@@ -80,22 +106,22 @@ function validateReportForInsights(report: Report): boolean {
  * Key distinction: "Attempts" include retries, "Results" are final test outcomes only.
  */
 interface AggregatedRunMetrics {
-    // ATTEMPT METRICS (includes retries)
-    totalAttempts: number           // Total test executions including retries (e.g., test fails 2x then passes = 3 attempts)
-    totalAttemptsFailed: number     // Total failed test executions including retries (e.g., 2 failed attempts + 1 final pass = 2 failed attempts)  
-    totalAttemptsFlaky: number      // Total retry attempts for flaky tests only, failed before the final result was passed (e.g., flaky test with 2 retries = 2 flaky attempts)
-    
-    // RESULT METRICS (final test outcomes only, no retries counted)
-    totalResults: number            // Total number of tests executed (each test counted once regardless of retries)
-    totalResultsFailed: number      // Number of tests with final status "failed" (1 per test regardless of retry count)
-    totalResultsPassed: number      // Number of tests with final status "passed" (1 per test regardless of retry count)
-    totalResultsSkipped: number     // Number of tests with final status "skipped/pending/other" (1 per test)
-    totalResultsFlaky: number       // Number of tests marked as flaky (1 per test regardless of retry count)
-    
-    // OTHER METRICS
-    totalResultsDuration: number    // Total duration of all final test results (retries not included in duration)
-    reportsAnalyzed: number         // Total number of reports analyzed    
-  }
+  // ATTEMPT METRICS (includes retries)
+  totalAttempts: number // Total test executions including retries (e.g., test fails 2x then passes = 3 attempts)
+  totalAttemptsFailed: number // Total failed test executions including retries (e.g., 2 failed attempts + 1 final pass = 2 failed attempts)
+  totalAttemptsFlaky: number // Total retry attempts for flaky tests only, failed before the final result was passed (e.g., flaky test with 2 retries = 2 flaky attempts)
+
+  // RESULT METRICS (final test outcomes only, no retries counted)
+  totalResults: number // Total number of tests executed (each test counted once regardless of retries)
+  totalResultsFailed: number // Number of tests with final status "failed" (1 per test regardless of retry count)
+  totalResultsPassed: number // Number of tests with final status "passed" (1 per test regardless of retry count)
+  totalResultsSkipped: number // Number of tests with final status "skipped/pending/other" (1 per test)
+  totalResultsFlaky: number // Number of tests marked as flaky (1 per test regardless of retry count)
+
+  // OTHER METRICS
+  totalResultsDuration: number // Total duration of all final test results (retries not included in duration)
+  reportsAnalyzed: number // Total number of reports analyzed
+}
 
 /**
  * Aggregated run metrics for a single test across multiple reports,
@@ -139,7 +165,7 @@ function aggregateTestMetricsAcrossReports(
           totalResultsDuration: 0,
           appearsInRuns: 0,
           reportsAnalyzed: 0,
-          durations: []
+          durations: [],
         })
       }
 
@@ -221,13 +247,9 @@ function consolidateTestMetricsToRunMetrics(
     totalResultsFlaky,
     totalAttemptsFlaky,
     totalResultsDuration,
-    reportsAnalyzed: metricsMap.size
+    reportsAnalyzed: metricsMap.size,
   }
 }
-
-// ========================================
-// INSIGHT Flaky Rate FUNCTIONS
-// ========================================
 
 /**
  * Calculates overall flaky rate from consolidated run metrics.
@@ -240,32 +262,10 @@ function calculateFlakyRateFromMetrics(
     return 0
   }
 
-  return Number((runMetrics.totalAttemptsFlaky / runMetrics.totalAttempts).toFixed(4))
+  return Number(
+    (runMetrics.totalAttemptsFlaky / runMetrics.totalAttempts).toFixed(4)
+  )
 }
-
-/**
- * Internal helper function that calculates flaky rate insights across all reports (current + all previous).
- *
- * @param currentReport - The current CTRF report
- * @param previousReports - Array of historical CTRF reports
- * @returns InsightsMetric with current value calculated across all reports
- */
-function calculateInsightFlakyRateCurrent(
-  currentReport: Report,
-  previousReports: Report[]
-): InsightsMetric {
-  const allReports = [currentReport, ...previousReports]
-
-  const testMetrics = aggregateTestMetricsAcrossReports(allReports)
-  const runMetrics = consolidateTestMetricsToRunMetrics(testMetrics)
-  const current = calculateFlakyRateFromMetrics(runMetrics)
-
-  return { current, previous: 0, change: 0 }
-}
-
-// ========================================
-// INSIGHT Fail Rate FUNCTIONS
-// ========================================
 
 /**
  * Calculates overall fail rate from consolidated run metrics.
@@ -278,70 +278,26 @@ function calculateFailRateFromMetrics(
     return 0
   }
 
-  return Number((runMetrics.totalResultsFailed / runMetrics.totalResults).toFixed(4))
+  return Number(
+    (runMetrics.totalResultsFailed / runMetrics.totalResults).toFixed(4)
+  )
 }
 
 /**
- * Internal helper function that calculates fail rate insights across all reports (current + all previous).
- *
- * @param currentReport - The current CTRF report
- * @param previousReports - Array of historical CTRF reports
- * @returns InsightsMetric with current value calculated across all reports
+ * Calculates overall pass rate from consolidated run metrics.
+ * Pass rate = (totalResultsPassed / totalResults) as ratio 0-1
  */
-function calculateFailRateInsight(
-  currentReport: Report,
-  previousReports: Report[]
-): InsightsMetric {
-  const allReports = [currentReport, ...previousReports]
-
-  const testMetrics = aggregateTestMetricsAcrossReports(allReports)
-  const runMetrics = consolidateTestMetricsToRunMetrics(testMetrics)
-  const current = calculateFailRateFromMetrics(runMetrics)
-
-  return { current, previous: 0, change: 0 }
-}
-
-// ========================================
-// INSIGHT Skipped Rate FUNCTIONS
-// ========================================
-
-/**
- * Calculates overall skipped rate from consolidated run metrics.
- * Skipped rate = (totalResultsSkipped / totalResults) as ratio 0-1
- */
-function calculateSkippedRateFromMetrics(
+function calculatePassRateFromMetrics(
   runMetrics: AggregatedRunMetrics
 ): number {
   if (runMetrics.totalResults === 0) {
     return 0
   }
 
-  return Number((runMetrics.totalResultsSkipped / runMetrics.totalResults).toFixed(4))
+  return Number(
+    (runMetrics.totalResultsPassed / runMetrics.totalResults).toFixed(4)
+  )
 }
-
-/**
- * Internal helper function that calculates skipped rate insights across all reports (current + all previous).
- *
- * @param currentReport - The current CTRF report
- * @param previousReports - Array of historical CTRF reports
- * @returns InsightsMetric with current value calculated across all reports
- */
-function calculateSkippedRateInsight(
-  currentReport: Report,
-  previousReports: Report[]
-): InsightsMetric {
-  const allReports = [currentReport, ...previousReports]
-
-  const testMetrics = aggregateTestMetricsAcrossReports(allReports)
-  const runMetrics = consolidateTestMetricsToRunMetrics(testMetrics)
-  const current = calculateSkippedRateFromMetrics(runMetrics)
-
-  return { current, previous: 0, change: 0 }
-}
-
-// ========================================
-// INSIGHT Average Test Duration FUNCTIONS
-// ========================================
 
 /**
  * Calculates average test duration from consolidated run metrics.
@@ -354,32 +310,10 @@ function calculateAverageTestDurationFromMetrics(
     return 0
   }
 
-  return Number((runMetrics.totalResultsDuration / runMetrics.totalResults).toFixed(2))
+  return Number(
+    (runMetrics.totalResultsDuration / runMetrics.totalResults).toFixed(2)
+  )
 }
-
-/**
- * Internal helper function that calculates average test duration insights across all reports (current + all previous).
- *
- * @param currentReport - The current CTRF report
- * @param previousReports - Array of historical CTRF reports
- * @returns InsightsMetric with current value calculated across all reports
- */
-function calculateAverageTestDurationInsight(
-  currentReport: Report,
-  previousReports: Report[]
-): InsightsMetric {
-  const allReports = [currentReport, ...previousReports]
-
-  const testMetrics = aggregateTestMetricsAcrossReports(allReports)
-  const runMetrics = consolidateTestMetricsToRunMetrics(testMetrics)
-  const current = calculateAverageTestDurationFromMetrics(runMetrics)
-
-  return { current, previous: 0, change: 0 }
-}
-
-// ========================================
-// INSIGHT Average Run Duration FUNCTIONS
-// ========================================
 
 /**
  * Calculates average run duration from consolidated run metrics.
@@ -392,33 +326,33 @@ function calculateAverageRunDurationFromMetrics(
     return 0
   }
 
-  return Number((runMetrics.totalResultsDuration / runMetrics.reportsAnalyzed).toFixed(2))
+  return Number(
+    (runMetrics.totalResultsDuration / runMetrics.reportsAnalyzed).toFixed(2)
+  )
 }
 
 /**
- * Internal helper function that calculates average run duration insights across all reports (current + all previous).
+ * Calculates p95 run duration from a collection of reports.
+ * Uses the actual run duration (summary.stop - summary.start) for each report.
  *
- * @param currentReport - The current CTRF report
- * @param previousReports - Array of historical CTRF reports
- * @returns InsightsMetric with current value calculated across all reports
+ * @param reports - Array of CTRF reports to calculate p95 from
+ * @returns The 95th percentile run duration
  */
-function calculateAverageRunDurationInsight(
-  currentReport: Report,
-  previousReports: Report[]
-): InsightsMetric {
-  const allReports = [currentReport, ...previousReports]
+function calculateP95RunDurationFromReports(reports: Report[]): number {
+  const runDurations: number[] = []
 
-  const testMetrics = aggregateTestMetricsAcrossReports(allReports)
-  const runMetrics = consolidateTestMetricsToRunMetrics(testMetrics)
+  for (const report of reports) {
+    if (validateReportForInsights(report) && report.results?.summary) {
+      const { start, stop } = report.results.summary
+      if (start && stop && stop > start) {
+        const runDuration = stop - start
+        runDurations.push(runDuration)
+      }
+    }
+  }
 
-  const current = calculateAverageRunDurationFromMetrics(runMetrics)
-
-  return { current, previous: 0, change: 0 }
+  return calculateP95(runDurations)
 }
-
-// ========================================
-// INSIGHT Current FUNCTIONS
-// ========================================
 
 /**
  * Internal helper function that recursively calculates insights for each report based on all reports that came before it chronologically.
@@ -428,192 +362,61 @@ function calculateAverageRunDurationInsight(
  * @param index - Current index being processed (default: 0)
  * @returns The reports array with insights populated for each report
  */
-function calculateRunInsights(
-        reports: Report[],
-  index: number = 0
-): Report[] {
+function calculateRunInsights(reports: Report[], index: number = 0): Report[] {
   if (index >= reports.length) {
     return reports
   }
 
   const currentReport = reports[index]
-  const previousReports = reports.slice(index + 1) // Reports that came before this one in time
+  const previousReports = reports.slice(index + 1)
 
   const allReportsUpToThisPoint = [currentReport, ...previousReports]
   const testMetrics = aggregateTestMetricsAcrossReports(allReportsUpToThisPoint)
   const runMetrics = consolidateTestMetricsToRunMetrics(testMetrics)
 
-  const { reportsAnalyzed, ...relevantMetrics } = runMetrics
-  
+  const { ...relevantMetrics } = runMetrics
+
   currentReport.insights = {
+    passRate: {
+      current: calculatePassRateFromMetrics(runMetrics),
+      baseline: 0,
+      change: 0,
+    },
     flakyRate: {
       current: calculateFlakyRateFromMetrics(runMetrics),
-      previous: 0,
-      change: 0
+      baseline: 0,
+      change: 0,
     },
     failRate: {
       current: calculateFailRateFromMetrics(runMetrics),
-      previous: 0,
-      change: 0
-    },
-    skippedRate: {
-      current: calculateSkippedRateFromMetrics(runMetrics),
-      previous: 0,
-      change: 0
+      baseline: 0,
+      change: 0,
     },
     averageTestDuration: {
       current: calculateAverageTestDurationFromMetrics(runMetrics),
-      previous: 0,
-      change: 0
+      baseline: 0,
+      change: 0,
     },
     averageRunDuration: {
       current: calculateAverageRunDurationFromMetrics(runMetrics),
-      previous: 0,
-      change: 0
+      baseline: 0,
+      change: 0,
     },
-    reportsAnalyzed: allReportsUpToThisPoint.length,
-    extra: relevantMetrics
+    p95RunDuration: {
+      current: calculateP95RunDurationFromReports(allReportsUpToThisPoint),
+      baseline: 0,
+      change: 0,
+    },
+    runsAnalyzed: allReportsUpToThisPoint.length,
+    extra: relevantMetrics,
   }
 
   return calculateRunInsights(reports, index + 1)
 }
 
-// ========================================
-// TEST-LEVEL INSIGHTS FUNCTIONS
-// ========================================
-
-/**
- * Calculates test-level flaky rate for a specific test.
- */
-function calculateTestFlakyRate(
-  testName: string,
-  testMetrics: AggregatedTestMetrics
-): InsightsMetric {
-  const current = testMetrics.totalAttempts === 0 ? 0 : 
-    Number((testMetrics.totalAttemptsFlaky / testMetrics.totalAttempts).toFixed(4))
-
-  return { current, previous: 0, change: 0 }
-}
-
-/**
- * Calculates test-level fail rate for a specific test.
- */
-function calculateTestFailRate(
-  testName: string,
-  testMetrics: AggregatedTestMetrics
-): InsightsMetric {
-  const current = testMetrics.totalResults === 0 ? 0 : 
-    Number((testMetrics.totalResultsFailed / testMetrics.totalResults).toFixed(4))
-  return { current, previous: 0, change: 0 }
-}
-
-/**
- * Calculates test-level skipped rate for a specific test.
- */
-function calculateTestSkippedRate(
-  testName: string,
-  testMetrics: AggregatedTestMetrics
-): InsightsMetric {
-  const current = testMetrics.totalResults === 0 ? 0 : 
-    Number((testMetrics.totalResultsSkipped / testMetrics.totalResults).toFixed(4))
-
-  return { current, previous: 0, change: 0 }
-}
-
-/**
- * Calculates test-level average duration for a specific test.
- */
-function calculateTestAverageDuration(
-  testName: string,
-  testMetrics: AggregatedTestMetrics
-): InsightsMetric {
-  const current = testMetrics.totalResults === 0 ? 0 : 
-    Number((testMetrics.totalResultsDuration / testMetrics.totalResults).toFixed(2))
-
-  return { current, previous: 0, change: 0 }
-}
-
-/**
- * Calculates test-level p95 duration for a specific test.
- */
-function calculateTestP95Duration(
-  testName: string,
-  testMetrics: AggregatedTestMetrics
-): InsightsMetric {
-  const current = calculateP95(testMetrics.durations)
-
-  return { current, previous: 0, change: 0 }
-}
-
-/**
- * Calculates test-level insights for a specific test.
- */
-function calculateTestInsights(
-  testName: string,
-  testMetrics: AggregatedTestMetrics,
-): TestInsights {
-  const { appearsInRuns, reportsAnalyzed, ...relevantMetrics } = testMetrics
-
-  return {
-    flakyRate: calculateTestFlakyRate(testName, testMetrics),
-    failRate: calculateTestFailRate(testName, testMetrics),
-    skippedRate: calculateTestSkippedRate(testName, testMetrics),
-    averageTestDuration: calculateTestAverageDuration(testName, testMetrics),
-    p95Duration: calculateTestP95Duration(testName, testMetrics),
-    appearsInRuns: testMetrics.appearsInRuns,
-    extra: relevantMetrics
-  }
-}
-
-/**
- * Internal helper function that adds test-level insights to all tests in the current report.
- *
- * @param currentReport - The current CTRF report to add insights to
- * @param previousReports - Array of historical CTRF reports
- * @returns The current report with test-level insights added to each test
- */
-function addTestInsightsToCurrentReport(
-  currentReport: Report,
-  previousReports: Report[]
-): Report {
-  if (!validateReportForInsights(currentReport)) {
-    return currentReport
-  }
-
-  const allReports = [currentReport, ...previousReports]
-  const testMetrics = aggregateTestMetricsAcrossReports(allReports)
-
-  const reportWithInsights: Report = {
-    ...currentReport,
-    results: {
-      ...currentReport.results,
-      tests: currentReport.results.tests.map(test => {
-        const testName = test.name
-        const metrics = testMetrics.get(testName)
-        
-        if (metrics) {
-          const testInsights = calculateTestInsights(testName, metrics)
-          return {
-            ...test,
-            insights: testInsights
-          }
-        }
-        
-        return test
-      })
-    }
-  }
-
-  return reportWithInsights
-}
-
-// ========================================
-// BASELINE INSIGHTS FUNCTIONS
-// ========================================
-
 /**
  * Calculates test-level insights with baseline comparison for a specific test.
- * 
+ *
  * @param testName - Name of the test
  * @param currentTestMetrics - Current aggregated test metrics
  * @param baselineTestMetrics - Baseline aggregated test metrics (optional)
@@ -624,64 +427,121 @@ function calculateTestInsightsWithBaseline(
   currentTestMetrics: AggregatedTestMetrics,
   baselineTestMetrics?: AggregatedTestMetrics
 ): TestInsights {
-  const currentFlakyRate = currentTestMetrics.totalAttempts === 0 ? 0 : 
-    Number((currentTestMetrics.totalAttemptsFlaky / currentTestMetrics.totalAttempts).toFixed(4))
-  const currentFailRate = currentTestMetrics.totalResults === 0 ? 0 : 
-    Number((currentTestMetrics.totalResultsFailed / currentTestMetrics.totalResults).toFixed(4))
-  const currentSkippedRate = currentTestMetrics.totalResults === 0 ? 0 : 
-    Number((currentTestMetrics.totalResultsSkipped / currentTestMetrics.totalResults).toFixed(4))
-  const currentAverageDuration = currentTestMetrics.totalResults === 0 ? 0 : 
-    Number((currentTestMetrics.totalResultsDuration / currentTestMetrics.totalResults).toFixed(2))
+  const currentPassRate =
+    currentTestMetrics.totalResults === 0
+      ? 0
+      : Number(
+          (
+            currentTestMetrics.totalResultsPassed /
+            currentTestMetrics.totalResults
+          ).toFixed(4)
+        )
+  const currentFlakyRate =
+    currentTestMetrics.totalAttempts === 0
+      ? 0
+      : Number(
+          (
+            currentTestMetrics.totalAttemptsFlaky /
+            currentTestMetrics.totalAttempts
+          ).toFixed(4)
+        )
+  const currentFailRate =
+    currentTestMetrics.totalResults === 0
+      ? 0
+      : Number(
+          (
+            currentTestMetrics.totalResultsFailed /
+            currentTestMetrics.totalResults
+          ).toFixed(4)
+        )
+  const currentAverageDuration =
+    currentTestMetrics.totalResults === 0
+      ? 0
+      : Number(
+          (
+            currentTestMetrics.totalResultsDuration /
+            currentTestMetrics.totalResults
+          ).toFixed(2)
+        )
   const currentP95Duration = calculateP95(currentTestMetrics.durations)
 
+  let baselinePassRate = 0
   let baselineFlakyRate = 0
   let baselineFailRate = 0
-  let baselineSkippedRate = 0
   let baselineAverageDuration = 0
   let baselineP95Duration = 0
 
   if (baselineTestMetrics) {
-    baselineFlakyRate = baselineTestMetrics.totalAttempts === 0 ? 0 : 
-      Number((baselineTestMetrics.totalAttemptsFlaky / baselineTestMetrics.totalAttempts).toFixed(4))
-    baselineFailRate = baselineTestMetrics.totalResults === 0 ? 0 : 
-      Number((baselineTestMetrics.totalResultsFailed / baselineTestMetrics.totalResults).toFixed(4))
-    baselineSkippedRate = baselineTestMetrics.totalResults === 0 ? 0 : 
-      Number((baselineTestMetrics.totalResultsSkipped / baselineTestMetrics.totalResults).toFixed(4))
-    baselineAverageDuration = baselineTestMetrics.totalResults === 0 ? 0 : 
-      Number((baselineTestMetrics.totalResultsDuration / baselineTestMetrics.totalResults).toFixed(2))
+    baselinePassRate =
+      baselineTestMetrics.totalResults === 0
+        ? 0
+        : Number(
+            (
+              baselineTestMetrics.totalResultsPassed /
+              baselineTestMetrics.totalResults
+            ).toFixed(4)
+          )
+    baselineFlakyRate =
+      baselineTestMetrics.totalAttempts === 0
+        ? 0
+        : Number(
+            (
+              baselineTestMetrics.totalAttemptsFlaky /
+              baselineTestMetrics.totalAttempts
+            ).toFixed(4)
+          )
+    baselineFailRate =
+      baselineTestMetrics.totalResults === 0
+        ? 0
+        : Number(
+            (
+              baselineTestMetrics.totalResultsFailed /
+              baselineTestMetrics.totalResults
+            ).toFixed(4)
+          )
+    baselineAverageDuration =
+      baselineTestMetrics.totalResults === 0
+        ? 0
+        : Number(
+            (
+              baselineTestMetrics.totalResultsDuration /
+              baselineTestMetrics.totalResults
+            ).toFixed(2)
+          )
     baselineP95Duration = calculateP95(baselineTestMetrics.durations)
   }
 
-  const { appearsInRuns, reportsAnalyzed, ...relevantMetrics } = currentTestMetrics
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { durations: _durations, ...relevantMetrics } = currentTestMetrics
 
   return {
+    passRate: {
+      current: currentPassRate,
+      baseline: baselinePassRate,
+      change: Number((currentPassRate - baselinePassRate).toFixed(4)),
+    },
     flakyRate: {
       current: currentFlakyRate,
-      previous: baselineFlakyRate,
-      change: Number((currentFlakyRate - baselineFlakyRate).toFixed(4))
+      baseline: baselineFlakyRate,
+      change: Number((currentFlakyRate - baselineFlakyRate).toFixed(4)),
     },
     failRate: {
       current: currentFailRate,
-      previous: baselineFailRate,
-      change: Number((currentFailRate - baselineFailRate).toFixed(4))
-    },
-    skippedRate: {
-      current: currentSkippedRate,
-      previous: baselineSkippedRate,
-      change: Number((currentSkippedRate - baselineSkippedRate).toFixed(4))
+      baseline: baselineFailRate,
+      change: Number((currentFailRate - baselineFailRate).toFixed(4)),
     },
     averageTestDuration: {
       current: currentAverageDuration,
-      previous: baselineAverageDuration,
-      change: Number((currentAverageDuration - baselineAverageDuration).toFixed(2))
+      baseline: baselineAverageDuration,
+      change: currentAverageDuration - baselineAverageDuration,
     },
-    p95Duration: {
+    p95TestDuration: {
       current: currentP95Duration,
-      previous: baselineP95Duration,
-      change: Number((currentP95Duration - baselineP95Duration).toFixed(2))
+      baseline: baselineP95Duration,
+      change: currentP95Duration - baselineP95Duration,
     },
-    appearsInRuns: currentTestMetrics.appearsInRuns,
-    extra: relevantMetrics
+    executedInRuns: currentTestMetrics.appearsInRuns,
+    extra: relevantMetrics,
   }
 }
 
@@ -707,13 +567,16 @@ function addTestInsightsWithBaselineToCurrentReport(
 
   let baselineTestMetrics: Map<string, AggregatedTestMetrics> | undefined
   if (baselineReport && validateReportForInsights(baselineReport)) {
-    const baselineIndex = previousReports.findIndex(report => 
-      report.results?.summary?.start === baselineReport.results?.summary?.start
+    const baselineIndex = previousReports.findIndex(
+      report =>
+        report.results?.summary?.start ===
+        baselineReport.results?.summary?.start
     )
-    
+
     if (baselineIndex >= 0) {
       const reportsUpToBaseline = previousReports.slice(baselineIndex)
-      baselineTestMetrics = aggregateTestMetricsAcrossReports(reportsUpToBaseline)
+      baselineTestMetrics =
+        aggregateTestMetricsAcrossReports(reportsUpToBaseline)
     }
   }
 
@@ -724,19 +587,23 @@ function addTestInsightsWithBaselineToCurrentReport(
       tests: currentReport.results.tests.map(test => {
         const testName = test.name
         const currentMetrics = currentTestMetrics.get(testName)
-        
+
         if (currentMetrics) {
           const baselineMetrics = baselineTestMetrics?.get(testName)
-          const testInsights = calculateTestInsightsWithBaseline(testName, currentMetrics, baselineMetrics)
+          const testInsights = calculateTestInsightsWithBaseline(
+            testName,
+            currentMetrics,
+            baselineMetrics
+          )
           return {
             ...test,
-            insights: testInsights
+            insights: testInsights,
           }
         }
-        
+
         return test
-      })
-    }
+      }),
+    },
   }
 
   return reportWithInsights
@@ -763,33 +630,59 @@ function calculateReportInsightsBaseline(
   }
 
   return {
+    passRate: {
+      current: currentInsights?.passRate?.current ?? 0,
+      baseline: previousInsights?.passRate?.current ?? 0,
+      change: Number(
+        (
+          (currentInsights?.passRate?.current ?? 0) -
+          (previousInsights?.passRate?.current ?? 0)
+        ).toFixed(4)
+      ),
+    },
     flakyRate: {
-      current: currentInsights.flakyRate.current,
-      previous: previousInsights.flakyRate.current,
-      change: Number((currentInsights.flakyRate.current - previousInsights.flakyRate.current).toFixed(4))
+      current: currentInsights?.flakyRate?.current ?? 0,
+      baseline: previousInsights?.flakyRate?.current ?? 0,
+      change: Number(
+        (
+          (currentInsights?.flakyRate?.current ?? 0) -
+          (previousInsights?.flakyRate?.current ?? 0)
+        ).toFixed(4)
+      ),
     },
     failRate: {
-      current: currentInsights.failRate.current,
-      previous: previousInsights.failRate.current,
-      change: Number((currentInsights.failRate.current - previousInsights.failRate.current).toFixed(4))
-    },
-    skippedRate: {
-      current: currentInsights.skippedRate.current,
-      previous: previousInsights.skippedRate.current,
-      change: Number((currentInsights.skippedRate.current - previousInsights.skippedRate.current).toFixed(4))
+      current: currentInsights?.failRate?.current ?? 0,
+      baseline: previousInsights?.failRate?.current ?? 0,
+      change: Number(
+        (
+          (currentInsights?.failRate?.current ?? 0) -
+          (previousInsights?.failRate?.current ?? 0)
+        ).toFixed(4)
+      ),
     },
     averageTestDuration: {
-      current: currentInsights.averageTestDuration.current,
-      previous: previousInsights.averageTestDuration.current,
-      change: Number((currentInsights.averageTestDuration.current - previousInsights.averageTestDuration.current).toFixed(2))
+      current: currentInsights?.averageTestDuration?.current ?? 0,
+      baseline: previousInsights?.averageTestDuration?.current ?? 0,
+      change:
+        (currentInsights?.averageTestDuration?.current ?? 0) -
+        (previousInsights?.averageTestDuration?.current ?? 0),
     },
     averageRunDuration: {
-      current: currentInsights.averageRunDuration.current,
-      previous: previousInsights.averageRunDuration.current,
-      change: Number((currentInsights.averageRunDuration.current - previousInsights.averageRunDuration.current).toFixed(2))
+      current: currentInsights?.averageRunDuration?.current ?? 0,
+      baseline: previousInsights?.averageRunDuration?.current ?? 0,
+      change:
+        (currentInsights?.averageRunDuration?.current ?? 0) -
+        (previousInsights?.averageRunDuration?.current ?? 0),
     },
-    reportsAnalyzed: currentInsights.reportsAnalyzed,
-    extra: currentInsights.extra
+    p95RunDuration: {
+      current: currentInsights?.p95RunDuration?.current ?? 0,
+      baseline: previousInsights?.p95RunDuration?.current ?? 0,
+      change:
+        (currentInsights?.p95RunDuration?.current ?? 0) -
+        (previousInsights?.p95RunDuration?.current ?? 0),
+    },
+    runsAnalyzed: currentInsights?.runsAnalyzed ?? 0,
+    extra: currentInsights.extra,
   }
 }
 
@@ -805,17 +698,24 @@ function getTestsRemovedSinceBaseline(
   currentReport: Report,
   baselineReport: Report
 ): SimplifiedTestData[] {
-  if (!validateReportForInsights(currentReport) || !validateReportForInsights(baselineReport)) {
+  if (
+    !validateReportForInsights(currentReport) ||
+    !validateReportForInsights(baselineReport)
+  ) {
     return []
   }
 
-  const currentTestNames = new Set(currentReport.results.tests.map(test => test.name))
-  const removedTests = baselineReport.results.tests.filter(test => !currentTestNames.has(test.name))
+  const currentTestNames = new Set(
+    currentReport.results.tests.map(test => test.name)
+  )
+  const removedTests = baselineReport.results.tests.filter(
+    test => !currentTestNames.has(test.name)
+  )
 
   return removedTests.map(test => ({
     name: test.name,
     suite: test.suite,
-    filePath: test.filePath
+    filePath: test.filePath,
   }))
 }
 
@@ -828,20 +728,27 @@ function getTestsRemovedSinceBaseline(
  * @returns Array of CtrfTest objects that were added since baseline
  */
 function getTestsAddedSinceBaseline(
-        currentReport: Report,
+  currentReport: Report,
   baselineReport: Report
 ): SimplifiedTestData[] {
-  if (!validateReportForInsights(currentReport) || !validateReportForInsights(baselineReport)) {
+  if (
+    !validateReportForInsights(currentReport) ||
+    !validateReportForInsights(baselineReport)
+  ) {
     return []
   }
 
-  const baselineTestNames = new Set(baselineReport.results.tests.map(test => test.name))
-  const addedTests = currentReport.results.tests.filter(test => !baselineTestNames.has(test.name))
+  const baselineTestNames = new Set(
+    baselineReport.results.tests.map(test => test.name)
+  )
+  const addedTests = currentReport.results.tests.filter(
+    test => !baselineTestNames.has(test.name)
+  )
 
   return addedTests.map(test => ({
     name: test.name,
     suite: test.suite,
-    filePath: test.filePath
+    filePath: test.filePath,
   }))
 }
 
@@ -859,14 +766,17 @@ function setTestsRemovedToInsights(
   currentReport: Report,
   baselineReport: Report
 ): Insights {
-  const removedTests = getTestsRemovedSinceBaseline(currentReport, baselineReport)
-  
+  const removedTests = getTestsRemovedSinceBaseline(
+    currentReport,
+    baselineReport
+  )
+
   return {
     ...insights,
     extra: {
       ...insights.extra,
-      testsRemoved: removedTests
-    }
+      testsRemoved: removedTests,
+    },
   }
 }
 
@@ -885,13 +795,13 @@ function setTestsAddedToInsights(
   baselineReport: Report
 ): Insights {
   const addedTests = getTestsAddedSinceBaseline(currentReport, baselineReport)
-  
+
   return {
     ...insights,
     extra: {
       ...insights.extra,
-      testsAdded: addedTests
-    }
+      testsAdded: addedTests,
+    },
   }
 }
 
@@ -900,102 +810,65 @@ function setTestsAddedToInsights(
 // ========================================
 
 /**
- * Helper function to find the baseline report based on the baseline parameter.
- *
- * @param reportsWithRunInsights - Array of reports with run insights (current first, then previous)
- * @param baseline - Baseline specification (undefined, number, or string)
- * @returns The baseline report to use for comparison, or null if not found
- */
-function findBaselineReport(
-  reportsWithRunInsights: Report[],
-  baseline?: number | string
-): Report | null {
-  if (baseline === undefined) {
-    return reportsWithRunInsights[1] || null
-  }
-
-  if (typeof baseline === 'number') {
-    const targetIndex = baseline + 1
-    if (targetIndex < reportsWithRunInsights.length) {
-      return reportsWithRunInsights[targetIndex]
-    }
-    console.warn(`Baseline index ${baseline} is out of range. Available previous reports: ${reportsWithRunInsights.length - 1}`)
-    return null
-  }
-
-  if (typeof baseline === 'string') {
-    const report = reportsWithRunInsights.find(
-      report => report.results?.summary?.start?.toString() === baseline
-    )
-    if (!report) {
-      console.warn(`No report found with start timestamp ID: ${baseline}`)
-      return null
-    }
-    return report
-  }
-
-  return null
-}
-
-/**
  * @param currentReport - The current CTRF report to enrich
- * @param previousReports - Array of historical CTRF reports (ordered newest to oldest)
- * @param baseline - Optional baseline specification:
- *   - undefined: Use most recent previous report (default)
- *   - number: Use report at this index in previousReports array (0 = most recent)
- *   - string: Use reportId
- * @returns The current report fully enriched with run-level insights, test-level insights, and baseline comparisons
+ * @param previousReports - Array of historical CTRF reports
+ * @param baseline - Optional baseline report to compare against. If not provided, no baseline comparisons are made.
+ * @returns The current report fully enriched with run-level insights, test-level insights, and baseline comparisons (if baseline provided)
  */
 export function enrichReportWithInsights(
-    currentReport: Report,
+  currentReport: Report,
   previousReports: Report[] = [],
-  baseline?: number | string
+  baseline?: Report
 ): Report {
   if (!validateReportForInsights(currentReport)) {
     console.warn('Current report is not valid for insights calculation')
     return currentReport
   }
 
-  const allReports = [currentReport, ...previousReports]
+  const sortedPreviousReports = sortReportsByTimestamp(previousReports)
+
+  const allReports = [currentReport, ...sortedPreviousReports]
   const reportsWithRunInsights = calculateRunInsights([...allReports])
-  
-  const baselineReport = previousReports.length > 0 ? 
-    findBaselineReport(reportsWithRunInsights, baseline) : null
 
-  const currentReportWithRunInsights = reportsWithRunInsights[0] // Current report is first
-  const currentReportWithTestInsights = addTestInsightsWithBaselineToCurrentReport(
-    currentReportWithRunInsights,
-    previousReports,
-    baselineReport || undefined
-  )
+  const currentReportWithRunInsights = reportsWithRunInsights[0]
+  const currentReportWithTestInsights =
+    addTestInsightsWithBaselineToCurrentReport(
+      currentReportWithRunInsights,
+      sortedPreviousReports,
+      baseline
+    )
 
-  if (previousReports.length === 0) {
+  if (!baseline) {
     return currentReportWithTestInsights
   }
 
-  if (!baselineReport) {
-    return currentReportWithTestInsights
-  }
-  
   let baselineInsights = calculateReportInsightsBaseline(
     currentReportWithTestInsights,
-    baselineReport
+    baseline
   )
 
   baselineInsights = setTestsAddedToInsights(
     baselineInsights,
     currentReportWithTestInsights,
-    baselineReport
+    baseline
   )
-  
+
   baselineInsights = setTestsRemovedToInsights(
     baselineInsights,
     currentReportWithTestInsights,
-    baselineReport
+    baseline
   )
+
+  // Remove testsAdded and testsRemoved as they're not part of the official schema yet
+  if (baselineInsights.extra?.testsAdded) {
+    delete baselineInsights.extra.testsAdded
+  }
+  if (baselineInsights.extra?.testsRemoved) {
+    delete baselineInsights.extra.testsRemoved
+  }
 
   return {
     ...currentReportWithTestInsights,
-    insights: baselineInsights
+    insights: baselineInsights,
   }
 }
