@@ -1,4 +1,4 @@
-[**CTRF v0.0.13**](../README.md)
+[**CTRF v0.0.14**](../README.md)
 
 ***
 
@@ -8,4 +8,4 @@
 
 > **TestStatus** = `"passed"` \| `"failed"` \| `"skipped"` \| `"pending"` \| `"other"`
 
-Defined in: [types/ctrf.d.ts:160](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L160)
+Defined in: [types/ctrf.d.ts:161](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L161)

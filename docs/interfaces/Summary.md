@@ -1,4 +1,4 @@
-[**CTRF v0.0.13**](../README.md)
+[**CTRF v0.0.14**](../README.md)
 
 ***
 
@@ -10,9 +10,9 @@ Defined in: [types/ctrf.d.ts:21](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 ## Properties
 
-### duration
+### duration?
 
-> **duration**: `number`
+> `optional` **duration**: `number`
 
 Defined in: [types/ctrf.d.ts:32](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L32)
 
@@ -34,9 +34,9 @@ Defined in: [types/ctrf.d.ts:24](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 ***
 
-### flaky
+### flaky?
 
-> **flaky**: `number`
+> `optional` **flaky**: `number`
 
 Defined in: [types/ctrf.d.ts:28](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L28)
 
