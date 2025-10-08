@@ -498,8 +498,6 @@ describe('root insights', () => {
        * - flakyAttempts = 1 (retry from the flaky test)
        * - relevantAttempts = 2 final results + 1 flaky attempt = 3 total
        * - flakyRate = 1/3 = 0.3333 (33.33%)
-       *
-       * This shows that 1 out of 3 total attempts was a flaky failure.
        */
       expect(result.insights!.flakyRate?.current).toBeCloseTo(0.3333, 4)
     })
@@ -530,10 +528,6 @@ describe('root insights', () => {
        * - flakyAttempts = 1 (only the retry from the test that eventually passed)
        * - relevantAttempts = 2 final results + 1 flaky attempt = 3 total
        * - flakyRate = 1/3 = 0.3333 (33.33%)
-       *
-       * Key insight: The 2 retries from the consistently failing test are NOT included
-       * in the flaky rate calculation because that test never passed (not flaky).
-       * Only the retry from the test that eventually passed counts as a "flaky attempt".
        */
       expect(result.insights!.flakyRate?.current).toBeCloseTo(0.3333, 4)
     })
@@ -590,9 +584,6 @@ describe('root insights', () => {
        * - flakyAttempts = 0 (no tests eventually passed, so no flaky attempts)
        * - relevantAttempts = 2 final results + 0 flaky attempts = 2 total
        * - flakyRate = 0/2 = 0 (0%)
-       *
-       * Key insight: Tests that fail after retries are consistently failing tests,
-       * not flaky tests. Their retries don't count toward flakiness metrics.
        */
       expect(result.insights!.flakyRate?.current).toBe(0)
     })
@@ -1083,19 +1074,19 @@ describe('test insights', () => {
        * Multi-report per-test calculation breakdown:
        *
        * Test A across reports:
-       * - Current: passed after 1 retry → 1 flaky attempt, 2 total attempts
-       * - Previous1: passed after 2 retries → 2 flaky attempts, 3 total attempts
-       * - Previous2: failed after 3 retries → 0 flaky attempts, 4 total attempts (not flaky because failed)
-       * Test A totals: 3 flaky attempts, 9 total attempts → 3/9 = 0.3333 (33.33%)
+       * - Current: passed after 1 retry → 1 flaky attempt, 1 final result
+       * - Previous1: passed after 2 retries → 2 flaky attempts, 1 final result
+       * - Previous2: failed after 3 retries → 0 flaky attempts, 1 final result (not flaky because failed)
+       * Test A totals: 3 flaky attempts, 3 final results → 3/(3+3) = 3/6 = 0.5 (50%)
        *
        * Test B across reports:
-       * - Current: passed immediately → 0 flaky attempts, 1 total attempt
-       * - Previous1: failed after 1 retry → 0 flaky attempts, 2 total attempts (not flaky because failed)
-       * - Previous2: passed after 1 retry → 1 flaky attempt, 2 total attempts
-       * Test B totals: 1 flaky attempt, 5 total attempts → 1/5 = 0.2 (20%)
+       * - Current: passed immediately → 0 flaky attempts, 1 final result
+       * - Previous1: failed after 1 retry → 0 flaky attempts, 1 final result (not flaky because failed)
+       * - Previous2: passed after 1 retry → 1 flaky attempt, 1 final result
+       * Test B totals: 1 flaky attempt, 3 final results → 1/(3+1) = 1/4 = 0.25 (25%)
        */
-      expect(testA!.insights!.flakyRate?.current).toBeCloseTo(0.3333, 4)
-      expect(testB!.insights!.flakyRate?.current).toBeCloseTo(0.2, 4)
+      expect(testA!.insights!.flakyRate?.current).toBeCloseTo(0.5, 4)
+      expect(testB!.insights!.flakyRate?.current).toBeCloseTo(0.25, 4)
     })
 
     it('should handle test that appears in some but not all reports', () => {
@@ -1257,8 +1248,6 @@ describe('test insights', () => {
        * - Previous1: passed after 2 retries → 2 flaky attempts, 3 total attempts
        * - Previous2: passed after 3 retries → 3 flaky attempts, 4 total attempts
        * Total: 5 flaky attempts, 8 total attempts → 5/8 = 0.625 (62.5%)
-       *
-       * This shows historical flakiness even though the test is currently stable.
        */
       expect(improvingTest!.insights!.flakyRate?.current).toBeCloseTo(0.625, 4)
     })
@@ -1336,12 +1325,12 @@ describe('test insights', () => {
 
       /*
        * Degrading test calculation across reports:
-       * - Current: failed after 2 retries → 0 flaky attempts, 3 total attempts (not flaky because failed)
-       * - Previous1: passed after 1 retry → 1 flaky attempt, 2 total attempts
-       * - Previous2: passed immediately → 0 flaky attempts, 1 total attempt
-       * Total: 1 flaky attempt, 6 total attempts → 1/6 = 0.1667 (16.67%)
+       * - Current: failed after 2 retries → 0 flaky attempts, 1 final result
+       * - Previous1: passed after 1 retry → 1 flaky attempt, 1 final result
+       * - Previous2: passed immediately → 0 flaky attempts, 1 final result
+       * Total: 1 flaky attempt, 3 final results → 1/(3+1) = 1/4 = 0.25 (25%)
        */
-      expect(degradingTest!.insights!.flakyRate?.current).toBeCloseTo(0.1667, 4)
+      expect(degradingTest!.insights!.flakyRate?.current).toBeCloseTo(0.25, 4)
     })
 
     it('should calculate 0% flaky rate for test that never had retries across reports', () => {

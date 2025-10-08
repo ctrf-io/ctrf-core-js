@@ -445,9 +445,11 @@ function calculateTestInsightsWithBaseline(
       : Number(
           (
             currentTestMetrics.totalAttemptsFlaky /
-            currentTestMetrics.totalAttempts
+            (currentTestMetrics.totalResults +
+              currentTestMetrics.totalAttemptsFlaky)
           ).toFixed(4)
         )
+
   const currentFailRate =
     currentTestMetrics.totalResults === 0
       ? 0
