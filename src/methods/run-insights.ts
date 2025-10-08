@@ -263,7 +263,10 @@ function calculateFlakyRateFromMetrics(
   }
 
   return Number(
-    (runMetrics.totalAttemptsFlaky / runMetrics.totalAttempts).toFixed(4)
+    (
+      runMetrics.totalAttemptsFlaky /
+      (runMetrics.totalResults + runMetrics.totalAttemptsFlaky)
+    ).toFixed(4)
   )
 }
 
