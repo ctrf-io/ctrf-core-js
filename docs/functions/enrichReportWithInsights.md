@@ -8,7 +8,7 @@
 
 > **enrichReportWithInsights**(`currentReport`, `previousReports`, `baseline?`): [`Report`](../interfaces/Report.md)
 
-Defined in: [src/methods/run-insights.ts:818](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/run-insights.ts#L818)
+Defined in: [src/methods/run-insights.ts:821](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/run-insights.ts#L821)
 
 ## Parameters
 
