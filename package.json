@@ -1,6 +1,6 @@
 {
   "name": "ctrf",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Common library for working with CTRF reports",
   "type": "module",
   "main": "dist/index.js",
@@ -12,7 +12,7 @@
     "node": ">=20.19.0"
   },
   "scripts": {
-    "build": "tsc -p .",
+    "build": "tsc -p . && cp src/ctrf-schema.json dist/",
     "build:check": "tsc -p . -noEmit",
     "build:watch": "tsc -p . --watch",
     "clean": "rm -rf dist && rm -rf coverage && rm -rf ctrf",
@@ -29,6 +29,7 @@
   "files": [
     "dist/",
     "types/",
+    "src/ctrf-schema.json",
     "README.md"
   ],
   "repository": "github:ctrf-io/ctrf-core-js",
@@ -36,6 +37,8 @@
   "author": "Matthew Thomas",
   "license": "MIT",
   "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "glob": "^11.0.3",
     "typescript": "^5.8.3",
     "yargs": "^18.0.0"

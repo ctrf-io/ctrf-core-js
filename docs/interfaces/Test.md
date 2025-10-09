@@ -212,7 +212,7 @@ Defined in: [types/ctrf.d.ts:42](https://github.com/ctrf-io/ctrf-core-js/blob/ma
 
 ### suite?
 
-> `optional` **suite**: `string`
+> `optional` **suite**: `string`[]
 
 Defined in: [types/ctrf.d.ts:43](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L43)
 

@@ -9,7 +9,7 @@ import { sortReportsByTimestamp } from './utilities/sort-reports.js'
 
 export interface SimplifiedTestData {
   name: string
-  suite?: string
+  suite?: string[]
   filePath?: string
 }
 

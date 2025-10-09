@@ -8,6 +8,12 @@ export {
 } from './methods/utilities/sort-reports.js'
 export { storePreviousResults } from './methods/store-previous-results.js'
 export { readReportFromFile } from './methods/read-reports.js'
+export {
+  validateReport,
+  validateReportStrict,
+  isValidCtrfReport,
+  type ValidationResult,
+} from './methods/validate-schema.js'
 
 export type {
   Report,

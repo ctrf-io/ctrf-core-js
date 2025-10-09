@@ -40,7 +40,7 @@ export interface Test {
   duration: number
   start?: number
   stop?: number
-  suite?: string
+  suite?: string[]
   message?: string
   trace?: string
   snippet?: string

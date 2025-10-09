@@ -22,6 +22,7 @@
 - [Test](interfaces/Test.md)
 - [TestInsights](interfaces/TestInsights.md)
 - [Tool](interfaces/Tool.md)
+- [ValidationResult](interfaces/ValidationResult.md)
 
 ## Type Aliases
 
@@ -30,9 +31,12 @@
 ## Functions
 
 - [enrichReportWithInsights](functions/enrichReportWithInsights.md)
+- [isValidCtrfReport](functions/isValidCtrfReport.md)
 - [mergeReports](functions/mergeReports.md)
 - [readReportFromFile](functions/readReportFromFile.md)
 - [readReportsFromDirectory](functions/readReportsFromDirectory.md)
 - [readReportsFromGlobPattern](functions/readReportsFromGlobPattern.md)
 - [sortReportsByTimestamp](functions/sortReportsByTimestamp.md)
 - [storePreviousResults](functions/storePreviousResults.md)
+- [validateReport](functions/validateReport.md)
+- [validateReportStrict](functions/validateReportStrict.md)
