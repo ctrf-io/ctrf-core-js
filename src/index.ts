@@ -49,6 +49,17 @@ export {
   getAllTests,
   getSuiteStats,
 } from './methods/tree-hierarchical-structure.js'
+/**
+ * @group Test Operations
+ */
+export {
+  setTestId,
+  getTestId,
+  setTestIdsForReport,
+  findTestById,
+  generateTestIdFromProperties,
+  CTRF_NAMESPACE,
+} from './methods/test-id.js'
 
 /**
  * @group Schema
