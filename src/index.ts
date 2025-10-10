@@ -14,6 +14,19 @@ export {
   isValidCtrfReport,
   type ValidationResult,
 } from './methods/validate-schema.js'
+export {
+  organizeTestsBySuite,
+  traverseTree,
+  findSuiteByName,
+  findTestByName,
+  flattenTree,
+  getAllTests,
+  getSuiteStats,
+  type TreeNode,
+  type TreeTest,
+  type TreeOptions,
+  type TestTree,
+} from './methods/tree-hierarchical-structure.js'
 
 export type {
   Report,
