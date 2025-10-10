@@ -8,7 +8,7 @@
 
 > **findTestByName**(`nodes`, `name`): `undefined` \| [`TreeTest`](../type-aliases/TreeTest.md)
 
-Defined in: src/methods/tree-hierarchical-structure.ts:354
+Defined in: [src/methods/tree-hierarchical-structure.ts:354](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L354)
 
 Utility function to find a test by name in the tree
 

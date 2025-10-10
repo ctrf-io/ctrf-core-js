@@ -8,7 +8,7 @@
 
 > **flattenTree**(`nodes`): `object`[]
 
-Defined in: src/methods/tree-hierarchical-structure.ts:379
+Defined in: [src/methods/tree-hierarchical-structure.ts:379](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L379)
 
 Utility function to convert tree to a flat array with indentation information
 Useful for displaying the tree in a linear format

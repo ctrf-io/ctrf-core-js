@@ -8,7 +8,7 @@
 
 > **getAllTests**(`nodes`): [`TreeTest`](../type-aliases/TreeTest.md)[]
 
-Defined in: src/methods/tree-hierarchical-structure.ts:403
+Defined in: [src/methods/tree-hierarchical-structure.ts:403](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L403)
 
 Utility function to get all tests from the tree structure as a flat array
 

@@ -4,35 +4,24 @@
 
 # CTRF v0.0.16
 
-## Enumerations
-
-- [SortOrder](enumerations/SortOrder.md)
-
-## Interfaces
+## Schema
 
 - [Attachment](interfaces/Attachment.md)
+- [Baseline](interfaces/Baseline.md)
 - [Environment](interfaces/Environment.md)
-- [Insights](interfaces/Insights.md)
 - [InsightsMetric](interfaces/InsightsMetric.md)
 - [Report](interfaces/Report.md)
 - [Results](interfaces/Results.md)
 - [RetryAttempt](interfaces/RetryAttempt.md)
+- [RootInsights](interfaces/RootInsights.md)
 - [Step](interfaces/Step.md)
 - [Summary](interfaces/Summary.md)
 - [Test](interfaces/Test.md)
 - [TestInsights](interfaces/TestInsights.md)
-- [TestTree](interfaces/TestTree.md)
 - [Tool](interfaces/Tool.md)
-- [TreeNode](interfaces/TreeNode.md)
-- [TreeOptions](interfaces/TreeOptions.md)
-- [ValidationResult](interfaces/ValidationResult.md)
-
-## Type Aliases
-
 - [TestStatus](type-aliases/TestStatus.md)
-- [TreeTest](type-aliases/TreeTest.md)
 
-## Functions
+## Methods
 
 - [enrichReportWithInsights](functions/enrichReportWithInsights.md)
 - [findSuiteByName](functions/findSuiteByName.md)
@@ -51,3 +40,18 @@
 - [traverseTree](functions/traverseTree.md)
 - [validateReport](functions/validateReport.md)
 - [validateReportStrict](functions/validateReportStrict.md)
+
+## Enumerations
+
+- [SortOrder](enumerations/SortOrder.md)
+
+## Interfaces
+
+- [TestTree](interfaces/TestTree.md)
+- [TreeNode](interfaces/TreeNode.md)
+- [TreeOptions](interfaces/TreeOptions.md)
+- [ValidationResult](interfaces/ValidationResult.md)
+
+## Type Aliases
+
+- [TreeTest](type-aliases/TreeTest.md)

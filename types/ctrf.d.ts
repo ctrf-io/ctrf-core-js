@@ -5,7 +5,7 @@ export interface Report {
   timestamp?: string
   generatedBy?: string
   results: Results
-  insights?: Insights
+  insights?: RootInsights
   baseline?: Baseline
   extra?: Record<string, unknown>
 }
@@ -120,7 +120,7 @@ export interface RetryAttempt {
   extra?: Record<string, unknown>
 }
 
-export interface Insights {
+export interface RootInsights {
   runsAnalyzed?: number
   passRate?: InsightsMetric
   failRate?: InsightsMetric

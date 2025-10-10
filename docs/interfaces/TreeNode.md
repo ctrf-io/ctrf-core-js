@@ -6,7 +6,7 @@
 
 # Interface: TreeNode
 
-Defined in: src/methods/tree-hierarchical-structure.ts:16
+Defined in: [src/methods/tree-hierarchical-structure.ts:16](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L16)
 
 Represents a tree node (suite) that can contain tests and child suites
 Following the CTRF Suite Tree schema specification
@@ -17,7 +17,7 @@ Following the CTRF Suite Tree schema specification
 
 > **duration**: `number`
 
-Defined in: src/methods/tree-hierarchical-structure.ts:22
+Defined in: [src/methods/tree-hierarchical-structure.ts:22](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L22)
 
 Total duration of all tests in this suite and children
 
@@ -27,7 +27,7 @@ Total duration of all tests in this suite and children
 
 > `optional` **extra**: `Record`\<`string`, `unknown`\>
 
-Defined in: src/methods/tree-hierarchical-structure.ts:30
+Defined in: [src/methods/tree-hierarchical-structure.ts:30](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L30)
 
 Additional properties
 
@@ -37,7 +37,7 @@ Additional properties
 
 > **name**: `string`
 
-Defined in: src/methods/tree-hierarchical-structure.ts:18
+Defined in: [src/methods/tree-hierarchical-structure.ts:18](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L18)
 
 The name of this suite
 
@@ -47,7 +47,7 @@ The name of this suite
 
 > **status**: [`TestStatus`](../type-aliases/TestStatus.md)
 
-Defined in: src/methods/tree-hierarchical-structure.ts:20
+Defined in: [src/methods/tree-hierarchical-structure.ts:20](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L20)
 
 The status of this suite (derived from child test results)
 
@@ -57,7 +57,7 @@ The status of this suite (derived from child test results)
 
 > **suites**: `TreeNode`[]
 
-Defined in: src/methods/tree-hierarchical-structure.ts:28
+Defined in: [src/methods/tree-hierarchical-structure.ts:28](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L28)
 
 Child suites contained within this suite
 
@@ -67,7 +67,7 @@ Child suites contained within this suite
 
 > `optional` **summary**: [`Summary`](Summary.md)
 
-Defined in: src/methods/tree-hierarchical-structure.ts:24
+Defined in: [src/methods/tree-hierarchical-structure.ts:24](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L24)
 
 Aggregated statistics for this suite (only present when includeSummary is true)
 
@@ -77,6 +77,6 @@ Aggregated statistics for this suite (only present when includeSummary is true)
 
 > **tests**: [`TreeTest`](../type-aliases/TreeTest.md)[]
 
-Defined in: src/methods/tree-hierarchical-structure.ts:26
+Defined in: [src/methods/tree-hierarchical-structure.ts:26](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L26)
 
 Tests directly contained in this suite
