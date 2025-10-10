@@ -2,9 +2,9 @@
 
 ***
 
-[CTRF](../README.md) / Insights
+[CTRF](../README.md) / RootInsights
 
-# Interface: Insights
+# Interface: RootInsights
 
 Defined in: [types/ctrf.d.ts:123](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L123)
 

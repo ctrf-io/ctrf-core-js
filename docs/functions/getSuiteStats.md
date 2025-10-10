@@ -8,7 +8,7 @@
 
 > **getSuiteStats**(`nodes`, `suitePath`): `undefined` \| [`Summary`](../interfaces/Summary.md)
 
-Defined in: src/methods/tree-hierarchical-structure.ts:422
+Defined in: [src/methods/tree-hierarchical-structure.ts:422](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L422)
 
 Utility function to get statistics for a specific suite path
 

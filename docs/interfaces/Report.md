@@ -12,7 +12,7 @@ Defined in: [types/ctrf.d.ts:1](https://github.com/ctrf-io/ctrf-core-js/blob/mai
 
 ### baseline?
 
-> `optional` **baseline**: `Baseline`
+> `optional` **baseline**: [`Baseline`](Baseline.md)
 
 Defined in: [types/ctrf.d.ts:9](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L9)
 
@@ -36,7 +36,7 @@ Defined in: [types/ctrf.d.ts:6](https://github.com/ctrf-io/ctrf-core-js/blob/mai
 
 ### insights?
 
-> `optional` **insights**: [`Insights`](Insights.md)
+> `optional` **insights**: [`RootInsights`](RootInsights.md)
 
 Defined in: [types/ctrf.d.ts:8](https://github.com/ctrf-io/ctrf-core-js/blob/main/types/ctrf.d.ts#L8)
 

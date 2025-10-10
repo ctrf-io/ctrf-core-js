@@ -8,7 +8,7 @@
 
 > **organizeTestsBySuite**(`tests`, `options`): [`TestTree`](../interfaces/TestTree.md)
 
-Defined in: src/methods/tree-hierarchical-structure.ts:92
+Defined in: [src/methods/tree-hierarchical-structure.ts:92](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L92)
 
 Organizes CTRF tests into a hierarchical tree structure based on the suite property.
 

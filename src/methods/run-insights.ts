@@ -3,7 +3,7 @@ import {
   Report,
   Test,
   TestInsights,
-  Insights,
+  RootInsights,
 } from '../../types/ctrf.js'
 import { sortReportsByTimestamp } from './utilities/sort-reports.js'
 
@@ -625,13 +625,13 @@ function addTestInsightsWithBaselineToCurrentReport(
 function calculateReportInsightsBaseline(
   currentReport: Report,
   baslineReport: Report
-): Insights {
+): RootInsights {
   const currentInsights = currentReport.insights
   const previousInsights = baslineReport.insights
 
   if (!currentInsights || !previousInsights) {
     console.log('Both reports must have insights populated')
-    return currentReport.insights as Insights
+    return currentReport.insights as RootInsights
   }
 
   return {
@@ -767,10 +767,10 @@ function getTestsAddedSinceBaseline(
  * @returns The insights object with testsRemoved added to extra
  */
 function setTestsRemovedToInsights(
-  insights: Insights,
+  insights: RootInsights,
   currentReport: Report,
   baselineReport: Report
-): Insights {
+): RootInsights {
   const removedTests = getTestsRemovedSinceBaseline(
     currentReport,
     baselineReport
@@ -795,10 +795,10 @@ function setTestsRemovedToInsights(
  * @returns The insights object with testsAdded added to extra
  */
 function setTestsAddedToInsights(
-  insights: Insights,
+  insights: RootInsights,
   currentReport: Report,
   baselineReport: Report
-): Insights {
+): RootInsights {
   const addedTests = getTestsAddedSinceBaseline(currentReport, baselineReport)
 
   return {

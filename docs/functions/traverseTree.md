@@ -8,7 +8,7 @@
 
 > **traverseTree**(`nodes`, `callback`, `depth`): `void`
 
-Defined in: src/methods/tree-hierarchical-structure.ts:302
+Defined in: [src/methods/tree-hierarchical-structure.ts:302](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/tree-hierarchical-structure.ts#L302)
 
 Utility function to traverse the tree and apply a function to each node
 
