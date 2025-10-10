@@ -1,4 +1,4 @@
-[**CTRF v0.0.15**](../README.md)
+[**CTRF v0.0.16**](../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ValidationResult
 
-Defined in: src/methods/validate-schema.ts:17
+Defined in: [src/methods/validate-schema.ts:17](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/validate-schema.ts#L17)
 
 Interface for validation result
 
@@ -16,7 +16,7 @@ Interface for validation result
 
 > `optional` **errors**: `string`[]
 
-Defined in: src/methods/validate-schema.ts:19
+Defined in: [src/methods/validate-schema.ts:19](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/validate-schema.ts#L19)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: src/methods/validate-schema.ts:19
 
 > **valid**: `boolean`
 
-Defined in: src/methods/validate-schema.ts:18
+Defined in: [src/methods/validate-schema.ts:18](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/validate-schema.ts#L18)

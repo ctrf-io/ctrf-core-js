@@ -1,4 +1,4 @@
-[**CTRF v0.0.15**](../README.md)
+[**CTRF v0.0.16**](../README.md)
 
 ***
 
@@ -8,9 +8,9 @@
 
 > **validateReport**(`report`): [`ValidationResult`](../interfaces/ValidationResult.md)
 
-Defined in: src/methods/validate-schema.ts:43
+Defined in: [src/methods/validate-schema.ts:43](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/validate-schema.ts#L43)
 
-Validates a CTRF report against the JSON schema using AJV
+Validates a CTRF report against the JSON schema
 
 ## Parameters
 

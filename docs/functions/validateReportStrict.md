@@ -1,4 +1,4 @@
-[**CTRF v0.0.15**](../README.md)
+[**CTRF v0.0.16**](../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **validateReportStrict**(`report`): `asserts report is Report`
 
-Defined in: src/methods/validate-schema.ts:69
+Defined in: [src/methods/validate-schema.ts:69](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/validate-schema.ts#L69)
 
 Validates a CTRF report and throws an error if invalid
 

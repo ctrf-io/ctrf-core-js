@@ -1,4 +1,4 @@
-[**CTRF v0.0.15**](../README.md)
+[**CTRF v0.0.16**](../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isValidCtrfReport**(`report`): `report is { reportFormat: "CTRF" }`
 
-Defined in: src/methods/validate-schema.ts:27
+Defined in: [src/methods/validate-schema.ts:27](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/validate-schema.ts#L27)
 
 Simple check to verify if an object is a CTRF report by checking the reportFormat
 
