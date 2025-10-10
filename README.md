@@ -33,9 +33,62 @@ We’d love your feedback, <a href="https://app.formbricks.com/s/cmefs524mhlh1tl
 npm install ctrf
 ```
 
-## API reference
+## API Reference
 
-See [API reference](./docs) for more details.
+### Schema Types
+
+- [Attachment](docs/interfaces/Attachment.md)
+- [Baseline](docs/interfaces/Baseline.md)
+- [Environment](docs/interfaces/Environment.md)
+- [InsightsMetric](docs/interfaces/InsightsMetric.md)
+- [Report](docs/interfaces/Report.md)
+- [Results](docs/interfaces/Results.md)
+- [RetryAttempt](docs/interfaces/RetryAttempt.md)
+- [RootInsights](docs/interfaces/RootInsights.md)
+- [Step](docs/interfaces/Step.md)
+- [Summary](docs/interfaces/Summary.md)
+- [Test](docs/interfaces/Test.md)
+- [TestInsights](docs/interfaces/TestInsights.md)
+- [Tool](docs/interfaces/Tool.md)
+- [TestStatus](docs/type-aliases/TestStatus.md)
+
+### File Operations Methods
+
+- [readReportFromFile](docs/functions/readReportFromFile.md)
+- [readReportsFromDirectory](docs/functions/readReportsFromDirectory.md)
+- [readReportsFromGlobPattern](docs/functions/readReportsFromGlobPattern.md)
+
+### Report Processing Methods
+
+- [enrichReportWithInsights](docs/functions/enrichReportWithInsights.md)
+- [mergeReports](docs/functions/mergeReports.md)
+- [sortReportsByTimestamp](docs/functions/sortReportsByTimestamp.md)
+- [storePreviousResults](docs/functions/storePreviousResults.md)
+
+### Validation Methods
+
+- [isValidCtrfReport](docs/functions/isValidCtrfReport.md)
+- [validateReport](docs/functions/validateReport.md)
+- [validateReportStrict](docs/functions/validateReportStrict.md)
+
+### Tree Operations Methods
+
+- [findSuiteByName](docs/functions/findSuiteByName.md)
+- [findTestByName](docs/functions/findTestByName.md)
+- [flattenTree](docs/functions/flattenTree.md)
+- [getAllTests](docs/functions/getAllTests.md)
+- [getSuiteStats](docs/functions/getSuiteStats.md)
+- [organizeTestsBySuite](docs/functions/organizeTestsBySuite.md)
+- [traverseTree](docs/functions/traverseTree.md)
+
+### Utility Types
+
+- [SortOrder](docs/enumerations/SortOrder.md) (enumeration)
+- [TestTree](docs/interfaces/TestTree.md)
+- [TreeNode](docs/interfaces/TreeNode.md)
+- [TreeOptions](docs/interfaces/TreeOptions.md)
+- [ValidationResult](docs/interfaces/ValidationResult.md)
+- [TreeTest](docs/type-aliases/TreeTest.md)
 
 ## TypeScript Types
 

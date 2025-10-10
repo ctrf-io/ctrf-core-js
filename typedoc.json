@@ -7,8 +7,24 @@
   "excludeExternals": true,
   "includeVersion": true,
   "categorizeByGroup": true,
-  "categoryOrder": ["Schema", "Utility Types", "Methods", "*"],
-  "groupOrder": ["Schema", "Utility Types", "Methods", "*"],
+  "categoryOrder": [
+    "Schema",
+    "File Operations",
+    "Report Processing",
+    "Validation",
+    "Tree Operations",
+    "Utility Types",
+    "*"
+  ],
+  "groupOrder": [
+    "Schema",
+    "File Operations",
+    "Report Processing",
+    "Validation",
+    "Tree Operations",
+    "Utility Types",
+    "*"
+  ],
   "readme": "none",
   "plugin": ["typedoc-plugin-markdown"],
   "name": "CTRF ",

@@ -1,36 +1,36 @@
 /**
- * @group Methods
+ * @group Report Processing
  */
 export { mergeReports } from './methods/merge-reports.js'
 /**
- * @group Methods
+ * @group File Operations
+ */
+export { readReportFromFile } from './methods/read-reports.js'
+/**
+ * @group File Operations
  */
 export { readReportsFromDirectory } from './methods/read-reports.js'
 /**
- * @group Methods
+ * @group File Operations
  */
 export { readReportsFromGlobPattern } from './methods/read-reports.js'
 /**
- * @group Methods
+ * @group Report Processing
  */
 export { enrichReportWithInsights } from './methods/run-insights.js'
 /**
- * @group Methods
+ * @group Report Processing
  */
 export {
   sortReportsByTimestamp,
   SortOrder,
 } from './methods/utilities/sort-reports.js'
 /**
- * @group Methods
+ * @group Report Processing
  */
 export { storePreviousResults } from './methods/store-previous-results.js'
 /**
- * @group Methods
- */
-export { readReportFromFile } from './methods/read-reports.js'
-/**
- * @group Methods
+ * @group Validation
  */
 export {
   validateReport,
@@ -38,7 +38,7 @@ export {
   isValidCtrfReport,
 } from './methods/validate-schema.js'
 /**
- * @group Methods
+ * @group Tree Operations
  */
 export {
   organizeTestsBySuite,

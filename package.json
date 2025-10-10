@@ -24,6 +24,7 @@
     "format:check": "prettier --check .",
     "docs": "typedoc",
     "docs:watch": "typedoc --watch",
+    "update-readme": "npx tsx update-readme.ts",
     "all": "npm run build:check && npm run test:coverage && npm run lint && npm run format && npm run docs && npm run build"
   },
   "files": [
