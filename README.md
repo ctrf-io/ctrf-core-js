@@ -81,6 +81,14 @@ npm install ctrf
 - [organizeTestsBySuite](docs/functions/organizeTestsBySuite.md)
 - [traverseTree](docs/functions/traverseTree.md)
 
+### Test Operations Methods
+
+- [findTestById](docs/functions/findTestById.md)
+- [generateTestIdFromProperties](docs/functions/generateTestIdFromProperties.md)
+- [getTestId](docs/functions/getTestId.md)
+- [setTestId](docs/functions/setTestId.md)
+- [setTestIdsForReport](docs/functions/setTestIdsForReport.md)
+
 ### Utility Types
 
 - [SortOrder](docs/enumerations/SortOrder.md) (enumeration)
@@ -89,6 +97,7 @@ npm install ctrf
 - [TreeOptions](docs/interfaces/TreeOptions.md)
 - [ValidationResult](docs/interfaces/ValidationResult.md)
 - [TreeTest](docs/type-aliases/TreeTest.md)
+- [CTRF\_NAMESPACE](docs/variables/CTRF_NAMESPACE.md)
 
 ## TypeScript Types
 

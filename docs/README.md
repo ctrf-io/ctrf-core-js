@@ -50,6 +50,14 @@
 - [organizeTestsBySuite](functions/organizeTestsBySuite.md)
 - [traverseTree](functions/traverseTree.md)
 
+## Test Operations
+
+- [findTestById](functions/findTestById.md)
+- [generateTestIdFromProperties](functions/generateTestIdFromProperties.md)
+- [getTestId](functions/getTestId.md)
+- [setTestId](functions/setTestId.md)
+- [setTestIdsForReport](functions/setTestIdsForReport.md)
+
 ## Enumerations
 
 - [SortOrder](enumerations/SortOrder.md)
@@ -64,3 +72,7 @@
 ## Type Aliases
 
 - [TreeTest](type-aliases/TreeTest.md)
+
+## Variables
+
+- [CTRF\_NAMESPACE](variables/CTRF_NAMESPACE.md)

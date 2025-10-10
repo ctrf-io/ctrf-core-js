@@ -13,9 +13,11 @@ function extractCategorizedSections(docsContent: string): string {
     { name: 'Report Processing', newName: 'Report Processing Methods' },
     { name: 'Validation', newName: 'Validation Methods' },
     { name: 'Tree Operations', newName: 'Tree Operations Methods' },
+    { name: 'Test Operations', newName: 'Test Operations Methods' },
     { name: 'Enumerations', newName: 'Utility Types' },
     { name: 'Interfaces', newName: 'Utility Types' },
     { name: 'Type Aliases', newName: 'Utility Types' },
+    { name: 'Variables', newName: 'Utility Types' },
   ]
 
   let apiContent = '## API Reference\n'
@@ -38,7 +40,7 @@ function extractCategorizedSections(docsContent: string): string {
       return `](docs/${url})`
     })
 
-    if (['Enumerations', 'Interfaces', 'Type Aliases'].includes(section.name)) {
+    if (['Enumerations', 'Interfaces', 'Type Aliases', 'Variables'].includes(section.name)) {
       if (!utilityTypesAdded) {
         apiContent += '\n### Utility Types\n\n'
         utilityTypesAdded = true
