@@ -21,25 +21,34 @@
 - [Tool](interfaces/Tool.md)
 - [TestStatus](type-aliases/TestStatus.md)
 
-## Methods
+## File Operations
+
+- [readReportFromFile](functions/readReportFromFile.md)
+- [readReportsFromDirectory](functions/readReportsFromDirectory.md)
+- [readReportsFromGlobPattern](functions/readReportsFromGlobPattern.md)
+
+## Report Processing
 
 - [enrichReportWithInsights](functions/enrichReportWithInsights.md)
+- [mergeReports](functions/mergeReports.md)
+- [sortReportsByTimestamp](functions/sortReportsByTimestamp.md)
+- [storePreviousResults](functions/storePreviousResults.md)
+
+## Validation
+
+- [isValidCtrfReport](functions/isValidCtrfReport.md)
+- [validateReport](functions/validateReport.md)
+- [validateReportStrict](functions/validateReportStrict.md)
+
+## Tree Operations
+
 - [findSuiteByName](functions/findSuiteByName.md)
 - [findTestByName](functions/findTestByName.md)
 - [flattenTree](functions/flattenTree.md)
 - [getAllTests](functions/getAllTests.md)
 - [getSuiteStats](functions/getSuiteStats.md)
-- [isValidCtrfReport](functions/isValidCtrfReport.md)
-- [mergeReports](functions/mergeReports.md)
 - [organizeTestsBySuite](functions/organizeTestsBySuite.md)
-- [readReportFromFile](functions/readReportFromFile.md)
-- [readReportsFromDirectory](functions/readReportsFromDirectory.md)
-- [readReportsFromGlobPattern](functions/readReportsFromGlobPattern.md)
-- [sortReportsByTimestamp](functions/sortReportsByTimestamp.md)
-- [storePreviousResults](functions/storePreviousResults.md)
 - [traverseTree](functions/traverseTree.md)
-- [validateReport](functions/validateReport.md)
-- [validateReportStrict](functions/validateReportStrict.md)
 
 ## Enumerations
 
