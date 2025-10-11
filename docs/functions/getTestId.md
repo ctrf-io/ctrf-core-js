@@ -8,7 +8,7 @@
 
 > **getTestId**(`test`): `string`
 
-Defined in: src/methods/test-id.ts:61
+Defined in: [src/methods/test-id.ts:68](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/test-id.ts#L68)
 
 Gets the test ID from a test object, generating one if it doesn't exist
 

@@ -62,6 +62,22 @@ export {
 } from './methods/test-id.js'
 
 /**
+ * @group Runtime
+ */
+export {
+  CtrfRuntime,
+  ctrfRuntime,
+  ctrf,
+  runtime,
+  mergeTestData,
+} from './runtime/index.js'
+
+/**
+ * @group Runtime
+ */
+export type { TestContext } from './runtime/index.js'
+
+/**
  * @group Schema
  */
 export type {

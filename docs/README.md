@@ -58,12 +58,21 @@
 - [setTestId](functions/setTestId.md)
 - [setTestIdsForReport](functions/setTestIdsForReport.md)
 
+## Runtime
+
+- [mergeTestData](functions/mergeTestData.md)
+
+## Classes
+
+- [CtrfRuntime](classes/CtrfRuntime.md)
+
 ## Enumerations
 
 - [SortOrder](enumerations/SortOrder.md)
 
 ## Interfaces
 
+- [TestContext](interfaces/TestContext.md)
 - [TestTree](interfaces/TestTree.md)
 - [TreeNode](interfaces/TreeNode.md)
 - [TreeOptions](interfaces/TreeOptions.md)
@@ -75,4 +84,7 @@
 
 ## Variables
 
+- [ctrf](variables/ctrf.md)
 - [CTRF\_NAMESPACE](variables/CTRF_NAMESPACE.md)
+- [ctrfRuntime](variables/ctrfRuntime.md)
+- [runtime](variables/runtime.md)

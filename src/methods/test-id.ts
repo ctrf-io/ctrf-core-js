@@ -5,7 +5,7 @@ import type { Test, Report } from '../../types/ctrf.js'
  * The CTRF namespace UUID used for generating deterministic test IDs.
  * This namespace ensures that all CTRF test IDs are generated consistently
  * across different implementations and tools.
- * 
+ *
  * @public
  */
 export const CTRF_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
@@ -17,27 +17,34 @@ export const CTRF_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
  * @param filePath - Test file path
  * @returns A deterministic UUID v5 string based on the properties
  */
-function generateTestId(name: string, suite?: string[], filePath?: string): string {
+function generateTestId(
+  name: string,
+  suite?: string[],
+  filePath?: string
+): string {
   const suiteString = suite ? suite.join('/') : ''
   const identifier = `${name}|${suiteString}|${filePath || ''}`
-  
-  const namespaceBytes = CTRF_NAMESPACE.replace(/-/g, '').match(/.{2}/g)!.map(byte => parseInt(byte, 16))
-  
+
+  const namespaceBytes = CTRF_NAMESPACE.replace(/-/g, '')
+    .match(/.{2}/g)!
+    .map(byte => parseInt(byte, 16))
+
   const input = Buffer.concat([
     Buffer.from(namespaceBytes),
-    Buffer.from(identifier, 'utf8')
+    Buffer.from(identifier, 'utf8'),
   ])
-  
+
   const hash = createHash('sha1').update(input).digest('hex')
-  
+
   const uuid = [
     hash.substring(0, 8),
     hash.substring(8, 12),
     '5' + hash.substring(13, 16),
-    ((parseInt(hash.substring(16, 17), 16) & 0x3) | 0x8).toString(16) + hash.substring(17, 20),
-    hash.substring(20, 32)
+    ((parseInt(hash.substring(16, 17), 16) & 0x3) | 0x8).toString(16) +
+      hash.substring(17, 20),
+    hash.substring(20, 32),
   ].join('-')
-  
+
   return uuid
 }
 
@@ -93,8 +100,8 @@ export function findTestById(report: Report, testId: string): Test | undefined {
  * @returns A deterministic UUID v5 string based on the properties
  */
 export function generateTestIdFromProperties(
-  name: string, 
-  suite?: string[], 
+  name: string,
+  suite?: string[],
   filePath?: string
 ): string {
   return generateTestId(name, suite, filePath)
