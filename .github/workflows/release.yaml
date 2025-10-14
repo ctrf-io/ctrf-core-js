@@ -1,0 +1,50 @@
+name: Publish npm Release
+
+on:
+  workflow_dispatch:  # Manual trigger for testing
+  push:
+    tags:
+      - 'v*.*.*' 
+permissions:
+  contents: write      
+  id-token: write      
+  packages: read       
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.19.0'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+          always-auth: true
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm all
+
+      - name: Publish to npm
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "🧪 Test mode: Dry run npm publish"
+            npm publish --dry-run --provenance
+          else
+            echo "🚀 Production: Publishing to npm"
+            npm publish --provenance
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
