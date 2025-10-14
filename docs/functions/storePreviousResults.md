@@ -8,7 +8,7 @@
 
 > **storePreviousResults**(`currentReport`, `previousReports`): [`Report`](../interfaces/Report.md)
 
-Defined in: [src/methods/store-previous-results.ts:34](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/store-previous-results.ts#L34)
+Defined in: [src/methods/store-previous-results.ts:35](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/store-previous-results.ts#L35)
 
 Stores previous results in the current report's previousResults array.
 Extracts key metrics from each previous report and adds them to the current report.

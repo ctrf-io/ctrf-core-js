@@ -40,7 +40,11 @@ function extractCategorizedSections(docsContent: string): string {
       return `](docs/${url})`
     })
 
-    if (['Enumerations', 'Interfaces', 'Type Aliases', 'Variables'].includes(section.name)) {
+    if (
+      ['Enumerations', 'Interfaces', 'Type Aliases', 'Variables'].includes(
+        section.name
+      )
+    ) {
       if (!utilityTypesAdded) {
         apiContent += '\n### Utility Types\n\n'
         utilityTypesAdded = true

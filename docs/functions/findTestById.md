@@ -8,7 +8,7 @@
 
 > **findTestById**(`report`, `testId`): `undefined` \| [`Test`](../interfaces/Test.md)
 
-Defined in: src/methods/test-id.ts:84
+Defined in: [src/methods/test-id.ts:91](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/test-id.ts#L91)
 
 Finds a test by its ID in a report
 
