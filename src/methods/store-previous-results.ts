@@ -17,6 +17,7 @@ interface PreviousResult {
   passed: number
   failed: number
   skipped: number
+  pending: number
   flaky: number
   other: number
   duration: number
@@ -77,10 +78,11 @@ export function storePreviousResults(
       buildNumber: report.results.environment?.buildNumber,
       buildUrl: report.results.environment?.buildUrl,
       result,
-      tests: summary.skipped,
+      tests: summary.tests,
       passed: summary.passed,
       failed: summary.failed,
       skipped: summary.skipped,
+      pending: summary.pending,
       flaky: flakyCount,
       other: summary.other,
       duration,

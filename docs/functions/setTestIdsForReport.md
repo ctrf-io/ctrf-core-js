@@ -8,7 +8,7 @@
 
 > **setTestIdsForReport**(`report`): [`Report`](../interfaces/Report.md)
 
-Defined in: src/methods/test-id.ts:73
+Defined in: [src/methods/test-id.ts:80](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/test-id.ts#L80)
 
 Sets test IDs for all tests in a report
 

@@ -8,7 +8,7 @@
 
 > **setTestId**(`test`): [`Test`](../interfaces/Test.md)
 
-Defined in: src/methods/test-id.ts:49
+Defined in: [src/methods/test-id.ts:56](https://github.com/ctrf-io/ctrf-core-js/blob/main/src/methods/test-id.ts#L56)
 
 Sets a test ID for a test object based on its properties
 

@@ -3,12 +3,12 @@
 This example demonstrates how to use the new deterministic test ID functionality.
 
 ```typescript
-import { 
-  setTestId, 
-  getTestId, 
-  setTestIdsForReport, 
+import {
+  setTestId,
+  getTestId,
+  setTestIdsForReport,
   findTestById,
-  generateTestIdFromProperties 
+  generateTestIdFromProperties,
 } from 'ctrf'
 import type { Test, Report } from 'ctrf'
 
@@ -18,7 +18,7 @@ const test: Test = {
   status: 'passed',
   duration: 150,
   suite: ['auth', 'login'],
-  filePath: 'src/auth/login.test.ts'
+  filePath: 'src/auth/login.test.ts',
 }
 
 // Set a test ID (generates deterministic UUID based on properties)
@@ -40,7 +40,7 @@ console.log('Generated ID:', customId) // Always the same for these inputs
 // Demonstrate deterministic behavior
 const sameId = generateTestIdFromProperties(
   'my test',
-  ['suite1', 'suite2'], 
+  ['suite1', 'suite2'],
   'my-test.ts'
 )
 console.log('Same ID?', customId === sameId) // true!
@@ -59,7 +59,7 @@ const report: Report = {
       pending: 0,
       other: 0,
       start: Date.now(),
-      stop: Date.now() + 1000
+      stop: Date.now() + 1000,
     },
     tests: [
       {
@@ -67,17 +67,17 @@ const report: Report = {
         status: 'passed',
         duration: 100,
         suite: ['unit'],
-        filePath: 'test1.ts'
+        filePath: 'test1.ts',
       },
       {
-        name: 'test 2', 
+        name: 'test 2',
         status: 'passed',
         duration: 200,
         suite: ['integration'],
-        filePath: 'test2.ts'
-      }
-    ]
-  }
+        filePath: 'test2.ts',
+      },
+    ],
+  },
 }
 
 // Set IDs for all tests
