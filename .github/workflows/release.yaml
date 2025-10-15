@@ -32,6 +32,9 @@ jobs:
       - name: Run tests
         run: npm run all
 
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+
       - name: Publish to npm
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
