@@ -1,7 +1,6 @@
-name: Publish npm Release
+name: Release
 
 on:
-  workflow_dispatch:
   push:
     tags:
       - 'v*.*.*' 
@@ -29,21 +28,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
+      - name: Run all checks and build
         run: npm run all
 
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
 
       - name: Publish to npm
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "🧪 Test mode: Dry run npm publish"
-            npm publish --dry-run --provenance
-          else
-            echo "🚀 Production: Publishing to npm"
-            npm publish --provenance
-          fi
+        run: npm publish --provenance
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
