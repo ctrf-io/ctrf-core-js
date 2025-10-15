@@ -33,7 +33,14 @@
     "src/ctrf-schema.json",
     "README.md"
   ],
-  "repository": "github:ctrf-io/ctrf-core-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrf-io/ctrf-core-js.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "homepage": "https://ctrf.io",
   "author": "Matthew Thomas",
   "license": "MIT",
