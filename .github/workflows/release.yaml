@@ -7,7 +7,7 @@ on:
 permissions:
   contents: write      
   id-token: write      
-  packages: read       
+  packages: write       
 
 jobs:
   release:
