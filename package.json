@@ -1,6 +1,6 @@
 {
   "name": "ctrf",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Common library for working with CTRF reports",
   "type": "module",
   "main": "dist/index.js",
