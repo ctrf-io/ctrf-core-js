@@ -3,8 +3,8 @@ import {
   validateReport,
   validateReportStrict,
   isValidCtrfReport,
-} from './validate-schema'
-import type { Report } from '../../types/ctrf'
+} from './validate-schema.js'
+import type { Report } from '../../types/ctrf.js'
 
 describe('validate-schema', () => {
   // Valid CTRF report for testing
