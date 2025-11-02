@@ -6,7 +6,7 @@ import {
   readReportsFromDirectory,
   readReportsFromGlobPattern,
 } from './read-reports'
-import { Report } from '../../types/ctrf'
+import { Report } from '../../types/ctrf.js'
 
 // Mock fs module for testing
 vi.mock('fs')

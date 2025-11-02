@@ -4,9 +4,9 @@ import * as os from 'os'
 import {
   enrichReportsWithInsights,
   EnrichmentConfig,
-} from '../../scripts/enrich-reports'
+} from '../../scripts/enrich-reports.js'
 import { Report, Test } from '../../types/ctrf.js'
-import { CTRF_REPORT_FORMAT, CTRF_SPEC_VERSION } from '../constants'
+import { CTRF_REPORT_FORMAT, CTRF_SPEC_VERSION } from '../constants.js'
 
 /**
  * Test helper for creating and testing report enrichment scenarios

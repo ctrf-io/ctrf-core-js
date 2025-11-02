@@ -7,7 +7,7 @@ import {
 } from './run-insights'
 
 import { Report, Test, InsightsMetric } from '../../types/ctrf.js'
-import { CTRF_REPORT_FORMAT, CTRF_SPEC_VERSION } from '../constants'
+import { CTRF_REPORT_FORMAT, CTRF_SPEC_VERSION } from '../constants.js'
 
 const createMockTest = (overrides: Partial<Test> = {}): Test => ({
   name: 'test-name',
