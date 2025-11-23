@@ -13,6 +13,7 @@
     "reportId": { "type": "string", "format": "uuid" },
     "timestamp": { "type": "string", "format": "date-time" },
     "generatedBy": { "type": "string" },
+    "extra": { "type": "object", "additionalProperties": true },
     "results": {
       "type": "object",
       "properties": {
@@ -21,9 +22,9 @@
           "properties": {
             "name": { "type": "string", "minLength": 1 },
             "version": { "type": "string" },
-            "extra": { "type": "object", "additionalProperties": true },
-            "additionalProperties": false
+            "extra": { "type": "object", "additionalProperties": true }
           },
+          "additionalProperties": false,
           "required": ["name"]
         },
         "summary": {
@@ -40,9 +41,9 @@
             "start": { "type": "integer" },
             "stop": { "type": "integer" },
             "duration": { "type": "integer" },
-            "extra": { "type": "object", "additionalProperties": true },
-            "additionalProperties": false
+            "extra": { "type": "object", "additionalProperties": true }
           },
+          "additionalProperties": false,
           "required": [
             "tests",
             "passed",
@@ -125,18 +126,18 @@
                           "extra": {
                             "type": "object",
                             "additionalProperties": true
-                          },
-                          "additionalProperties": false
+                          }
                         },
+                        "additionalProperties": false,
                         "required": ["name", "contentType", "path"]
                       }
                     },
                     "extra": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "additionalProperties": false
+                    }
                   },
+                  "additionalProperties": false,
                   "required": ["attempt", "status"]
                 }
               },
@@ -155,9 +156,9 @@
                     "name": { "type": "string" },
                     "contentType": { "type": "string" },
                     "path": { "type": "string" },
-                    "extra": { "type": "object", "additionalProperties": true },
-                    "additionalProperties": false
+                    "extra": { "type": "object", "additionalProperties": true }
                   },
+                  "additionalProperties": false,
                   "required": ["name", "contentType", "path"]
                 }
               },
@@ -178,9 +179,9 @@
                         "other"
                       ]
                     },
-                    "extra": { "type": "object", "additionalProperties": true },
-                    "additionalProperties": false
+                    "extra": { "type": "object", "additionalProperties": true }
                   },
+                  "additionalProperties": false,
                   "required": ["name", "status"]
                 }
               },
@@ -195,13 +196,13 @@
                   },
                   "p95TestDuration": { "$ref": "#/definitions/metricDelta" },
                   "executedInRuns": { "type": "integer" },
-                  "extra": { "type": "object", "additionalProperties": true },
-                  "additionalProperties": false
-                }
+                  "extra": { "type": "object", "additionalProperties": true }
+                },
+                "additionalProperties": false
               },
-              "extra": { "type": "object", "additionalProperties": true },
-              "additionalProperties": false
+              "extra": { "type": "object", "additionalProperties": true }
             },
+            "additionalProperties": false,
             "required": ["name", "status", "duration"]
           }
         },
@@ -223,13 +224,13 @@
             "osRelease": { "type": "string" },
             "osVersion": { "type": "string" },
             "testEnvironment": { "type": "string" },
-            "extra": { "type": "object", "additionalProperties": true },
-            "additionalProperties": false
-          }
+            "extra": { "type": "object", "additionalProperties": true }
+          },
+          "additionalProperties": false
         },
-        "extra": { "type": "object", "additionalProperties": true },
-        "additionalProperties": false
+        "extra": { "type": "object", "additionalProperties": true }
       },
+      "additionalProperties": false,
       "required": ["tool", "summary", "tests"]
     },
     "insights": {
@@ -242,9 +243,9 @@
         "p95RunDuration": { "$ref": "#/definitions/metricDelta" },
         "averageTestDuration": { "$ref": "#/definitions/metricDelta" },
         "runsAnalyzed": { "type": "integer" },
-        "extra": { "type": "object", "additionalProperties": true },
-        "additionalProperties": false
-      }
+        "extra": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
     },
     "baseline": {
       "type": "object",
@@ -265,6 +266,7 @@
       "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "required": ["results", "reportFormat", "specVersion"],
   "definitions": {
     "metricDelta": {
